@@ -1,0 +1,30 @@
+ARG FROM=ubuntu:24.04
+
+FROM $FROM
+
+USER root
+
+RUN apt-get update \ 
+ && apt-get install -y software-properties-common \
+# && add-apt-repository ppa:ondrej/php \
+ && apt-get update \ 
+ && apt-get install -y git php-fpm php-cli php-cgi sqlite3 mysql-client unzip openssl php-common php-curl php-json php-mbstring php-mysql php-sqlite3 php-redis php-xml php-zip php-zmq \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+ && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+ && php -r "unlink('composer-setup.php');"
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+ENV NVM_DIR=/home/${IMAGE_USER}/.nvm
+ENV NODE_VERSION=v20.17.0
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
+
+ENV NODE_PATH="$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules"
+ENV PATH="$NVM_DIR/versions/node/$NODE_VERSION/bin:/home/${IMAGE_USER}/.dotnet:$PATH"
+
+CMD ["bash"]
+

@@ -1,0 +1,29 @@
+ARG FROM=ubuntu:24.04
+
+FROM $FROM
+
+USER root
+
+RUN apt-get update \
+ && apt-get install -y plantuml \
+ && rm -rf /var/lib/apt/lists/*
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+RUN mkdir -p ~/.miniconda3 \
+ && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/.miniconda3/miniconda.sh \
+ && bash ~/.miniconda3/miniconda.sh -b -u -p ~/.miniconda3 \
+ && rm -rf ~/.miniconda3/miniconda.sh
+
+ENV PATH="/home/${IMAGE_USER}/.miniconda3/bin:${PATH}"
+
+RUN conda install -y jupyter pickleshare
+
+RUN composer global require rabrennie/jupyter-php-kernel
+RUN mv .composer .composer_for_jpyter_php_kernel
+ENV PATH="/home/${IMAGE_USER}/.composer_for_jpyter_php_kernel/vendor/bin:${PATH}"
+RUN jupyter-php-kernel --install
+
+CMD jupyter notebook --port=9999 index.ipynb
+

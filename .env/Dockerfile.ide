@@ -1,0 +1,30 @@
+ARG FROM=ubuntu:24.04
+
+FROM $FROM
+
+USER root
+
+RUN apt-get update \ 
+ && apt-get install -y wget \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt
+
+RUN wget https://download.jetbrains.com/webide/PhpStorm-2024.2.4.tar.gz \
+ && tar xzf PhpStorm-2024.2.4.tar.gz \
+ && rm PhpStorm-2024.2.4.tar.gz
+
+ARG PHPSTORM=/usr/bin/phpstorm
+ARG PHPSTORM_VERSION=242.23726.107
+RUN echo "#! /bin/bash" > ${PHPSTORM} \
+ && echo "NO_AT_BRIDGE=1 /opt/PhpStorm-${PHPSTORM_VERSION}/bin/phpstorm.sh \"\$@\"" >> ${PHPSTORM} \
+ && chmod +x ${PHPSTORM}
+
+RUN echo "idea.filewatcher.disabled=true" >> /opt/PhpStorm-${PHPSTORM_VERSION}/bin/idea.properties
+RUN echo "-Dide.browser.jcef.sandbox.enable=false" >> /opt/PhpStorm-${PHPSTORM_VERSION}/bin/phpstorm64.vmoptions
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+CMD ["phpstorm"]
+

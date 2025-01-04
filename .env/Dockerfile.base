@@ -1,0 +1,43 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update \ 
+ && apt-get install -y wget curl sudo \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY --from=library/docker:latest /usr/local/bin/docker /usr/local/bin/docker
+
+RUN curl -L "https://github.com/docker/compose/releases/download/v2.29.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
+ && chmod +x /usr/local/bin/docker-compose
+
+ARG USER=user
+ARG UID=1000
+ARG GROUP=group
+ARG GID=1001
+
+RUN userdel -r ubuntu \
+ && groupadd -g ${GID} ${GROUP} \
+ && useradd -m ${USER} --uid=${UID} -g ${GROUP} \
+ && passwd -d ${USER} \
+ && usermod -a -G sudo ${USER}
+
+ARG DOCKER_GROUP=docker
+ARG DOCKER_GID=997
+
+RUN groupadd -g ${DOCKER_GID} docker
+RUN usermod -a -G docker ${USER}
+
+ENV IMAGE_USER=${USER}
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+RUN touch .sudo_as_admin_successful
+RUN mkdir -p .composer .npm .java .config/JetBrains .config/google-chrome-for-testing .local/share/JetBrains .cache/JetBrains .cache/google-chrome-for-testing
+
+CMD ["bash"]
+

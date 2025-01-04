@@ -1,0 +1,67 @@
+image: ddgg/php_2024_iad:build_v2
+
+pipelines:
+  default:
+    - step:
+        runs-on:
+          - linux
+          - self.hosted
+        caches:
+          - composer
+          - node
+        services:
+          - mysql
+          - redis
+          - selenium
+        script:
+          - composer global require sebastian/phpcpd:6.0.3 --dev
+<<<<<<< HEAD
+          - pushd 07_testing/02_exercise/project
+          -   composer install
+          -   vendor/bin/codecept build
+          -   vendor/bin/php-cs-fixer fix --diff --dry-run .
+          -   vendor/bin/phpstan analyze -c phpstan.neon
+          -   vendor/bin/codecept run Unit
+          -   php -S localhost:8888 -t public &
+=======
+          - pushd 09_laravel_tdd/project
+          -   composer install
+          -   vendor/bin/codecept build
+          -   vendor/bin/php-cs-fixer fix --diff --dry-run .
+          -   vendor/bin/phpstan analyze
+          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 35 --exclude vendor --exclude config --exclude storage --exclude tests_codeception/Support/_generated
+          -   cp .env.example .env
+          -   php artisan key:generate
+          -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306"; do echo "Waiting for MySQL..."; sleep 1; done
+          -   php artisan migrate:fresh
+          -   php artisan db:seed
+          -   mysqldump -h127.0.0.1 -u root --password=root123 test > tests_codeception/Support/Data/dump.sql
+          -   npm install
+          -   npm run build
+          -   php artisan test
+          -   php artisan serve --port 8888 &
+>>>>>>> 0cf6acb (09_laravel_tdd)
+          -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/6379"; do echo "Waiting for Redis..."; sleep 1; done
+          -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306"; do echo "Waiting for MySQL..."; sleep 1; done
+          -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/4444"; do echo "Waiting for Selenium..."; sleep 1; done
+          -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/8888"; do echo "Waiting for App..."; sleep 1; done
+          -   vendor/bin/codecept run Acceptance --xml test_report.xml
+          -   killall php
+          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 20 --exclude vendor --exclude tests
+          - popd
+          - .ci/collect_reports.sh
+definitions:
+  services:
+    mysql:
+      image: mysql:8.0
+      variables:
+        MYSQL_ROOT_PASSWORD: root123
+        MYSQL_ROOT_HOST: "%"
+        MYSQL_DATABASE: test
+        MYSQL_USER: test
+        MYSQL_PASSWORD: test123
+    redis:
+      image: redis
+    selenium:
+      image: selenium/standalone-chrome:130.0.6723.69-chromedriver-130.0.6723.69
+

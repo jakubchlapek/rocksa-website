@@ -1,0 +1,65 @@
+ARG FROM=ubuntu:24.04
+
+FROM $FROM
+
+USER root
+
+RUN apt-get update \
+ && apt-get install -y vim php-xdebug default-jre libxkbcommon-x11-0 libgbm1 \
+ && rm -rf /var/lib/apt/lists/*
+
+ARG CHROME_VERSION=130.0.6723.69
+RUN wget https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chrome-linux64.zip \
+ && unzip chrome-linux64.zip \
+ && rm chrome-linux64.zip \
+ && mv chrome-linux64 /opt/chrome_${CHROME_VERSION}
+
+ARG XDEBUG_HELPER=/opt/xdebug-helper-for-chrome
+RUN git clone --depth 1 -b 1.6.1  https://github.com/mac-cain13/xdebug-helper-for-chrome.git ${XDEBUG_HELPER} 
+
+ARG CHROME=/opt/chrome_${CHROME_VERSION}/chrome
+ARG CHROME_WITH_FLAGS=${CHROME}_with_flags
+RUN echo "#! /bin/bash" > ${CHROME_WITH_FLAGS} \
+ && echo "${CHROME} --no-sandbox --disable-gpu --disable-dev-shm-usage --load-extension=${XDEBUG_HELPER}/source  \"\$@\"" >> ${CHROME_WITH_FLAGS} \
+ && chmod +x ${CHROME_WITH_FLAGS}
+
+RUN ln -s ${CHROME_WITH_FLAGS} /usr/bin/google-chrome
+
+RUN sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/google-chrome 500
+RUN sudo update-alternatives --set x-www-browser /usr/bin/google-chrome
+
+ARG CHROME_DESKTOP=/usr/share/applications/google-chrome.desktop
+RUN echo "[Desktop Entry]" >> ${CHROME_DESKTOP} \
+ && echo "Name=Google Chrome for Testing" >> ${CHROME_DESKTOP} \
+ && echo "Exec=/usr/bin/google-chrome" >> ${CHROME_DESKTOP} \
+ && echo "Type=Application" >> ${CHROME_DESKTOP}
+
+ARG PHP_VERSION=8.3
+RUN echo "xdebug.remote_enable = 1" >> /etc/php/${PHP_VERSION}/mods-available/xdebug.ini \
+ && echo "xdebug.remote_host = 127.0.0.1" >> /etc/php/${PHP_VERSION}/mods-available/xdebug.ini \
+ && echo "xdebug.remote_port = 9000" >> /etc/php/${PHP_VERSION}/mods-available/xdebug.ini \
+ && echo "xdebug.mode=develop,debug,trace " >> /etc/php/${PHP_VERSION}/mods-available/xdebug.ini \
+ && service php${PHP_VERSION}-fpm restart
+
+ARG SELENIUM_VERSION=4.24.0
+RUN wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-${SELENIUM_VERSION}/selenium-server-${SELENIUM_VERSION}.jar \
+ && mkdir /opt/selenium \
+ && mv selenium-server-${SELENIUM_VERSION}.jar /opt/selenium
+
+RUN wget https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}/linux64/chromedriver-linux64.zip \
+ && unzip chromedriver-linux64.zip \
+ && mv chromedriver-linux64/chromedriver /opt/selenium \
+ && rm -rf chromedriver-linux64*
+
+USER ${IMAGE_USER}
+WORKDIR /home/${IMAGE_USER}
+
+RUN echo "[Default Applications]" >> ~/.config/mimeapps.list \
+ && echo "text/html=google-chrome.desktop" >> ~/.config/mimeapps.list \
+ && echo "x-scheme-handler/http=google-chrome.desktop" >> ~/.config/mimeapps.list \
+ && echo "x-scheme-handler/https=google-chrome.desktop" >> ~/.config/mimeapps.list \
+ && echo "x-scheme-handler/about=google-chrome.desktop" >> ~/.config/mimeapps.list \
+ && echo "x-scheme-handler/unknown=google-chrome.desktop" >> ~/.config/mimeapps.list
+
+CMD ["bash"]
+

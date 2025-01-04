@@ -1,0 +1,10 @@
+#! /bin/bash
+
+CONTAINERS=$(docker ps -q)
+
+if [ -z "$CONTAINERS" ]
+then
+    echo "There is nothing to stop."
+else
+    docker kill $CONTAINERS
+fi
