@@ -6,7 +6,7 @@
                     <div>
                         <p class="text-xl">{{ $rock->title }}</p>
                         <div class="pt-3">
-                            @markdown(rock->description)
+                            @markdown($rock->description)
                         </div>
                         <p class="text-sm text-gray-500 pt-6"><strong class="mr-1">ISBN</strong>{{ $rock->isbn }}</p>
                     </div>

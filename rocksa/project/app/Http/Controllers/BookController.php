@@ -12,42 +12,42 @@ class BookController extends Controller
 {
     public function index(): View
     {
-        return view('books.index')->with('books', Book::all());
+        return view('rocks.index')->with('rocks', Book::all());
     }
 
     public function create(): View
     {
-        return view('books.create');
+        return view('rocks.create');
     }
 
     public function store(StoreBookRequest $request): RedirectResponse
     {
-        $book = Book::create($request->validated());
+        $rock = Book::create($request->validated());
 
-        return redirect()->route('books.show', $book);
+        return redirect()->route('rocks.show', $rock);
     }
 
-    public function show(Book $book): View
+    public function show(Book $rock): View
     {
-        return view('books.show')->with('book', $book);
+        return view('rocks.show')->with('rock', $rock);
     }
 
-    public function edit(Book $book): View
+    public function edit(Book $rock): View
     {
-        return view('books.edit')->with('book', $book);
+        return view('rocks.edit')->with('rock', $rock);
     }
 
-    public function update(UpdateBookRequest $request, Book $book): RedirectResponse
+    public function update(UpdateBookRequest $request, Book $rock): RedirectResponse
     {
-        $book->update($request->validated());
+        $rock->update($request->validated());
 
-        return redirect()->route('books.show', $book);
+        return redirect()->route('rocks.show', $rock);
     }
 
-    public function destroy(Book $book): RedirectResponse
+    public function destroy(Book $rock): RedirectResponse
     {
-        $book->delete();
+        $rock->delete();
 
-        return redirect()->route('books.index');
+        return redirect()->route('rocks.index');
     }
 }
