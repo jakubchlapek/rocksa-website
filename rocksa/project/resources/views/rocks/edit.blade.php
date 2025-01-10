@@ -11,16 +11,16 @@
                         <div class="flex flex-row gap-4">
                             <div class="w-1/2">
                                 <div class="mt-4">
-                                    <x-input-label for="name" :value="__('Name')"/>
-                                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                    <x-input-label for="title" :value="__('Title')"/>
+                                    <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
                                                   :value="$rock->title"/>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                                    <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                                 </div>
                                 <div class="mt-4">
-                                    <x-input-label for="mineral" :value="__('Main Mineral')"/>
-                                    <x-text-input id="mineral" class="block mt-1 w-full" type="text" name="mineral"
-                                                  :value="$rock->mineral"/>
-                                    <x-input-error :messages="$errors->get('mineral')" class="mt-2"/>
+                                    <x-input-label for="main_mineral" :value="__('Main Mineral')"/>
+                                    <x-text-input id="main_mineral" class="block mt-1 w-full" type="text" name="main_mineral"
+                                                  :value="$rock->main_mineral"/>
+                                    <x-input-error :messages="$errors->get('main_mineral')" class="mt-2"/>
                                 </div>
                                 <div class="mt-4">
                                     <x-input-label for="weight" :value="__('Weight')"/>
@@ -57,10 +57,10 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    <x-input-label for="country" :value="__('Country of Origin')"/>
-                                    <x-text-input id="country" class="block mt-1 w-full" type="text" name="country"
+                                    <x-input-label for="country_of_origin" :value="__('Country of Origin')"/>
+                                    <x-text-input id="country_of_origin" class="block mt-1 w-full" type="text" name="country_of_origin"
                                                   :value="$rock->country_of_origin"/>
-                                    <x-input-error :messages="$errors->get('country')" class="mt-2"/>
+                                    <x-input-error :messages="$errors->get('country_of_origin')" class="mt-2"/>
                                 </div>
                                 <div class="mt-4">
                                     <x-input-label for="color" :value="__('Color')"/>
