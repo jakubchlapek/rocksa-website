@@ -8,20 +8,80 @@
                         @csrf
                         @method('PUT')
 
-                        <div>
-                            <x-input-label for="isbn" :value="__('ISBN')"/>
-                            <x-text-input id="isbn" class="block mt-1 w-full" type="text" name="isbn"
-                                          :value="$rock->isbn"/>
-                            <x-input-error :messages="$errors->get('isbn')" class="mt-2"/>
-                        </div>
+                        <div class="flex flex-row gap-4">
+                            <div class="w-1/2">
+                                <div class="mt-4">
+                                    <x-input-label for="name" :value="__('Name')"/>
+                                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                                  :value="$rock->title"/>
+                                    <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="mineral" :value="__('Main Mineral')"/>
+                                    <x-text-input id="mineral" class="block mt-1 w-full" type="text" name="mineral"
+                                                  :value="$rock->mineral"/>
+                                    <x-input-error :messages="$errors->get('mineral')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="weight" :value="__('Weight')"/>
+                                    <x-text-input id="weight" class="block mt-1 w-full" type="text" name="weight"
+                                                  :value="$rock->weight"/>
+                                    <x-input-error :messages="$errors->get('weight')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="density" :value="__('Density')"/>
+                                    <x-text-input id="density" class="block mt-1 w-full" type="text" name="density"
+                                                  :value="$rock->density"/>
+                                    <x-input-error :messages="$errors->get('density')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="rarity" :value="__('Rarity')"/>
+                                    <x-text-input id="rarity" class="block mt-1 w-full" type="text" name="rarity"
+                                                  :value="$rock->rarity"/>
+                                    <x-input-error :messages="$errors->get('rarity')" class="mt-2"/>
+                                </div>
 
-                        <div class="mt-4">
-                            <x-input-label for="title" :value="__('Title')"/>
-                            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
-                                          :value="$rock->title"/>
-                            <x-input-error :messages="$errors->get('title')" class="mt-2"/>
-                        </div>
+                                <div class="mt-4">
+                                    <x-input-label for="price" :value="__('Price')"/>
+                                    <x-text-input id="price" class="block mt-1 w-full" type="text" name="price"
+                                                  :value="$rock->price"/>
+                                    <x-input-error :messages="$errors->get('price')" class="mt-2"/>
+                                </div>
+                            </div>
+                            <div class="w-1/2">
+                                <div class="mt-4">
+                                    <x-input-label for="treatment" :value="__('Treatment')"/>
+                                    <x-text-input id="treatment" class="block mt-1 w-full" type="text" name="treatment"
+                                                  :value="$rock->treatment"/>
+                                    <x-input-error :messages="$errors->get('treatment')" class="mt-2"/>
+                                </div>
 
+                                <div class="mt-4">
+                                    <x-input-label for="country" :value="__('Country of Origin')"/>
+                                    <x-text-input id="country" class="block mt-1 w-full" type="text" name="country"
+                                                  :value="$rock->country_of_origin"/>
+                                    <x-input-error :messages="$errors->get('country')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="color" :value="__('Color')"/>
+                                    <x-text-input id="color" class="block mt-1 w-full" type="text" name="color"
+                                                  :value="$rock->color"/>
+                                    <x-input-error :messages="$errors->get('color')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="clarity" :value="__('Clarity')"/>
+                                    <x-text-input id="clarity" class="block mt-1 w-full" type="text" name="clarity"
+                                                  :value="$rock->clarity"/>
+                                    <x-input-error :messages="$errors->get('clarity')" class="mt-2"/>
+                                </div>
+                                <div class="mt-4">
+                                    <x-input-label for="toughness" :value="__('Toughness')"/>
+                                    <x-text-input id="toughness" class="block mt-1 w-full" type="text" name="toughness"
+                                                  :value="$rock->toughness"/>
+                                    <x-input-error :messages="$errors->get('toughness')" class="mt-2"/>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')"/>
                             <x-text-input id="description" class="block mt-1 w-full" type="text" name="description"
