@@ -6,51 +6,44 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
+/**
+ * @method mixed get(string $name) Dynamically retrieve attributes from $data
+ */
 class RockCard extends Component
 {
-    public int $rockId;
-    public string $image;
     /**
-     * @var array<string> $more_images
+     * @var array<string, mixed> The data array containing the rock card properties
      */
-    public array $more_images;
-    public string $name;
-    public string $color;
-    public string $origin;
-    public string $properties;
-    public string $description;
-    public bool $inCart;
-    public float $price;
+    public array $data = [];
 
-    public function __construct(
-        int $rockId = 0,
-        string $image = "static/default.jpg",
-        array $more_images = [],
-        string $name = "Unknown",
-        string $color = "Unknown",
-        string $origin = "Unknown",
-        string $properties = "No data",
-        string $description = "No description available",
-        bool $inCart = false,
-        float $price = 0.00,
-    ) {
-        $this->rockId = $rockId;
-        $this->image = $image;
-        $this->more_images = $more_images;
-        $this->name = $name;
-        $this->color = $color;
-        $this->origin = $origin;
-        $this->properties = $properties;
-        $this->description = $description;
-        $this->inCart = $inCart;
-        $this->price = $price;
+    /**
+     * Constructor to initialize the data array
+     *
+     * @param array<string, mixed> $data
+     */
+    public function __construct(array $data = [])
+    {
+        $this->data = $data; // Store all properties in the data array
     }
 
     /**
-     * Get the view / contents that represent the component.
+     * Dynamically retrieve attributes from $data
+     *
+     * @param string $name The property name to access
+     * @return mixed The value associated with the property
+     */
+    public function __get(string $name): mixed
+    {
+        return $this->data[$name] ?? null; // Return the property if it exists, otherwise null
+    }
+
+    /**
+     * Render the view for the component
+     *
+     * @return View|Closure|string The view rendering the component
      */
     public function render(): View|Closure|string
     {
-        return view('components.rock-card');
+        return view('components.rock-card', ['data' => $this->data]);
     }
 }
