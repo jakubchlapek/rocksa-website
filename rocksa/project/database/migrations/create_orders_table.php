@@ -23,7 +23,7 @@ return new class () extends Migration {
             $table->string('postal_code'); // Postal code
             $table->string('phone_number'); // Customer's phone number
             $table->string('email'); // Customer's email address
-            $table->timestamp(); // Created at & updated at timestamp
+            $table->timestamps(); // Created at & updated at timestamp
         });
     }
 
