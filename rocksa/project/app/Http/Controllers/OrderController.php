@@ -22,7 +22,9 @@ class OrderController extends Controller
 
     public function store(StoreOrderRequest $request): RedirectResponse
     {
-        $order = Order::create($request->validated());
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        $order = Order::create($data);
 
         return redirect()->route('orders.show', $order);
     }

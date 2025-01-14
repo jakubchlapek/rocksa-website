@@ -22,7 +22,9 @@ class RockController extends Controller
 
     public function store(StoreRockRequest $request): RedirectResponse
     {
-        $rock = Rock::create($request->validated());
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        $rock = Rock::create($data);
 
         return redirect()->route('rocks.show', $rock);
     }

@@ -11,7 +11,7 @@ class Rock extends Model
      *
      * @inheritdoc
      */
-    protected $fillable = ['title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
+    protected $fillable = ['user_id', 'title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
 
     public function setTitleAttribute(string $value): void
     {
