@@ -9,6 +9,11 @@ use Illuminate\Notifications\Notifiable;
 
 class Order extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @inheritdoc
+     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -18,20 +23,9 @@ class Order extends Model
         'email',
         'nip'];
 
-    public static function create(mixed $validated)
-    {
-        return self::create($validated);
-    }
-
-
     public function getKeyType(): string
     {
         return 'string';
-    }
-
-    public function getIncrementing(): false
-    {
-        return false;
     }
 
     public function user()
@@ -41,6 +35,6 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Book::class)->withPivot(['quantity']);
+        return $this->belongsToMany(Rock::class);
     }
 }

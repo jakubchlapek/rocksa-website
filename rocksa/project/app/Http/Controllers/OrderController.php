@@ -41,13 +41,13 @@ class OrderController extends Controller
     {
         $order->update($request->validated());
 
-        return redirect()->route('order.show', $order);
+        return redirect()->route('orders.show', $order);
     }
 
     public function destroy(Order $order): RedirectResponse
     {
         $order->delete();
 
-        return redirect()->route('order.index');
+        return redirect()->route('orders.index');
     }
 }

@@ -7,7 +7,7 @@
                         <p>There are no orders in the database.</p>
                     @else
                          @foreach($orders as $order)
-                                $order
+                                {{$order}}
                          @endforeach
                     @endif
                     <form method="GET" action="{{ route('orders.create') }}" class="pt-6">

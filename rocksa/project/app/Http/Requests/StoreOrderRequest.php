@@ -18,7 +18,7 @@ class StoreOrderRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array<mixed|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -28,7 +28,7 @@ class StoreOrderRequest extends FormRequest
             'street' => 'required',
             'city' => 'required',
             'postal_code' => ['required', 'regex:/^\d{2}-\d{3}$/'],
-            'phone_number' => ['required','regex:/^d{3} \d[3] \d{3}$/'],
+            'phone_number' => ['required', 'regex:/^\d{3} ?\d{3} ?\d{3}$/'],
             'email' => 'required',
         ];
     }
