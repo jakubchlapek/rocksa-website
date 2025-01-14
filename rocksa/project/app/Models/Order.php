@@ -9,32 +9,22 @@ use Illuminate\Notifications\Notifiable;
 
 class Order extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @inheritdoc
-     */
     protected $fillable = [
         'first_name',
         'last_name',
         'street',
-        'city', 'postal_code',
+        'city',
+        'postal_code',
         'phone_number',
-        'email',
-        'nip'];
-
-    public function getKeyType(): string
-    {
-        return 'string';
-    }
+        'email'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function products()
+    public function orderitems()
     {
-        return $this->belongsToMany(Rock::class);
+        return $this->hasMany(OrderItems::class);
     }
 }
