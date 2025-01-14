@@ -59,7 +59,7 @@
         </div>
         <div class="mt-4 text-2xl text-gray-700 font-semibold">
             <span>Price: </span>
-            <span class="text-green-500">{{ number_format($data['price'], 2) }} €</span>
+            <span class="text-green-500">{{ $data['price'] }} €</span>
         </div>
         <div x-show="expanded" x-transition class="mt-4 text-base text-gray-700">
             <p>{!! $data['description'] !!}</p>
