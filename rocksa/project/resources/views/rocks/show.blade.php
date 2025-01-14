@@ -4,17 +4,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
-                        <p class="text-xl">{{ $rock->title }}</p>
-                        <p class="text-xl">{{ $rock->main_mineral }}</p>
-                        <p class="text-xl">{{ $rock->treatment }}</p>
-                        <p class="text-xl">{{ $rock->weight }}</p>
-                        <p class="text-xl">{{ $rock->density }}</p>
-                        <p class="text-xl">{{ $rock->color }}</p>
-                        <p class="text-xl">{{ $rock->clarity }}</p>
-                        <p class="text-xl">{{ $rock->toughness }}</p>
-                        <p class="text-xl">{{ $rock->rarity }}</p>
+                        <p class="text-xl"><b>Listing Title: </b>{{ $rock->title }}</p>
+                        <p class="text-xl"><b>Main Mineral: </b>{{ $rock->main_mineral }}</p>
+                        <p class="text-xl"><b>Treatment: </b>{{ $rock->treatment }}</p>
+                        <p class="text-xl"><b>Weight: </b>{{ $rock->weight }}</p>
+                        <p class="text-xl"><b>Density: </b>{{ $rock->density }}</p>
+                        <p class="text-xl"><b>Color: </b>{{ $rock->color }}</p>
+                        <p class="text-xl"><b>Clarity: </b>{{ $rock->clarity }}</p>
+                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }}</p>
+                        <p class="text-xl"><b>Rarity: </b>{{ $rock->rarity }}</p>
                         <div class="pt-3">
-                            @markdown($rock->description)
+                            <b>Description: </b>@markdown($rock->description)
                         </div>
                         <p class="text-sm text-gray-500 pt-6"><strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}</p>
                     </div>
