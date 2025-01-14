@@ -12,7 +12,7 @@ class RockController extends Controller
 {
     public function index(): View
     {
-        return view('rocks.index')->with('rocks', Rock::all());
+        return view('rocks.index')->with('rocks', Rock::where("user_id", auth()->id())->get());
     }
 
     public function create(): View
