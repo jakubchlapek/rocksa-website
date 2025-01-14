@@ -35,6 +35,7 @@ class StoreRockRequest extends FormRequest
             'toughness' => 'required|numeric|min:1|max:10',
             'rarity' => 'required',
             'price' => 'required|numeric',
+            // 'image' => 'required',
         ];
     }
 

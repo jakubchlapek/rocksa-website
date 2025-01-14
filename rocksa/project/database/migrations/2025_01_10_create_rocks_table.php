@@ -24,6 +24,7 @@ return new class () extends Migration {
             $table->float('toughness');
             $table->string('rarity');
             $table->float('price');
+            // $table->binary('image');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('rocks');
     }
 };
