@@ -13,34 +13,18 @@ class Order extends Model
         'first_name',
         'last_name',
         'street',
-        'city', 'postal_code',
+        'city',
+        'postal_code',
         'phone_number',
-        'email',
-        'nip'];
-
-    public static function create(mixed $validated)
-    {
-        return self::create($validated);
-    }
-
-
-    public function getKeyType(): string
-    {
-        return 'string';
-    }
-
-    public function getIncrementing(): false
-    {
-        return false;
-    }
+        'email'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function products()
+    public function orderitems()
     {
-        return $this->belongsToMany(Book::class)->withPivot(['quantity']);
+        return $this->hasMany(OrderItems::class);
     }
 }
