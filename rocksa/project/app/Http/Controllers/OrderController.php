@@ -7,12 +7,13 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function index(): View
     {
-        return view('orders.index')->with('orders', Order::all());
+        return view('orders.index')->with('orders', Order::where('user_id',auth()->id())->get());
     }
 
     public function create(): View
