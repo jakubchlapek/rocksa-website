@@ -42,6 +42,10 @@
                             {{ __('Your Rocks') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                            {{ __('Your Orders') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

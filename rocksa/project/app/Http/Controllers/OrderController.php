@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index(): View
     {
-        return view('orders.index')->with('order', Order::all());
+        return view('orders.index')->with('orders', Order::all());
     }
 
     public function create(): View
