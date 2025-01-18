@@ -28,12 +28,15 @@ class Rock extends Model
         return number_format($value, 2, '.');
     }
 
-    public function orders()
+    public function oderItems()
     {
-        return $this->belongsToMany(Order::class, 'order_items')
-            ->withPivot('quantity', 'price')
-            ->withTimestamps();
+        return $this->belongsTo(OrderItems::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
 
 }
