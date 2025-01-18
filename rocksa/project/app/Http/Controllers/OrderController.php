@@ -22,7 +22,7 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request): RedirectResponse
     {
         $data = $request->validated();
-        $data['user_id'] = auth()->id(); // Dodajemy user_id dla zalogowanego użytkownika
+        $data['user_id'] = auth()->id();
         $order = Order::create($data);
 
         return redirect()->route('orders.show', $order);
@@ -62,4 +62,7 @@ class OrderController extends Controller
             abort(403, 'Unauthorized action.');
         }
     }
+
 }
+
+

@@ -28,9 +28,9 @@ class Rock extends Model
         return number_format($value, 2, '.');
     }
 
-    public function oderItems()
+    public function orderItems()
     {
-        return $this->belongsTo(OrderItems::class);
+        return $this->hasMany(OrderItems::class);
     }
     public function user()
     {

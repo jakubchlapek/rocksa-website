@@ -1,6 +1,30 @@
-@props(['data'])
+<div x-data="{
+        expanded: false,
+        inCart: false,
+        showImageGallery: false,
+        fullScreenImage: null
+    }"
+     x-init="
+        window.addEventListener('removedFromCart', event => {
+            if (!event.detail || !event.detail[0].removedProductId) {
+                console.error('Invalid removedFromCart event:', event.detail);
+                return;
+            }
 
-<div x-data="{ expanded: false, inCart: false, showImageGallery: false, fullScreenImage: null }"
+            const removedProductId = event.detail[0].removedProductId;
+            console.log('Received removedFromCart event:', removedProductId);
+
+            const productId = {{ $data['rockId'] }};
+            if (removedProductId === productId) {
+                inCart = false;
+            }
+        });
+
+        window.addEventListener('cartCleared', event => {
+            console.log('Received cartCleared event');
+            inCart = false;
+        });
+    "
      @keydown.escape.window="fullScreenImage ? fullScreenImage = null : showImageGallery = false"
      class="flex flex-col h-[35rem] text-2xl font-bold ring-4 ring-gray-300 shadow-lg rounded-2xl bg-gray-50 transition-all duration-500 ease-in-out"
      :class="{ 'w-[32rem]': expanded, 'w-[20rem]': !expanded }">
@@ -82,18 +106,18 @@
         <!-- Add/Remove from Cart Button -->
         <button @click="
         if (!inCart) {
-            Livewire.dispatch('addToCart', [{{ $data['rockId'] }}, '{{ $data['name'] }}', {{ $data['price'] }}]);
+            Livewire.dispatch('addToCart', [{{ $data['rockId'] }}, '{{ $data['name'] }}', {{ $data['price'] }}, '{{ $data['image'] }}'] );
         } else {
             Livewire.dispatch('removeFromCart', [{{ $data['rockId'] }}]);
         }
         inCart = !inCart"
                 @mouseover="clearTimeout(timer); timer = setTimeout(() => hovering = true, 100)"
                 @mouseleave="clearTimeout(timer); hovering = false"
-                :class="{
-                    'bg-green-500': inCart && !hovering,
-                    'bg-red-500': inCart && hovering,
-                    'bg-black hover:bg-gray-600': !inCart
-                }"
+                        :class="{
+            'bg-green-500': inCart && !hovering,
+            'bg-red-500': inCart && hovering,
+            'bg-black hover:bg-gray-600': !inCart
+        }"
                 class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-200 text-white shadow-lg"
                 x-data="{ hovering: false, timer: null }">
             <!-- Default "Add" Icon -->

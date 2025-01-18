@@ -4,8 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RockController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,10 +12,17 @@ Route::get('/', function () {
 Route::get('/cardtest', function () {
     return view('card-test');
 });
+Route::get('/carttest', function () {
+    return view('cart-test');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/carttestlivewire', function () {
+    return view('cart-test-livewire');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('rocks', RockController::class);
-    Route::resource('orders', OrderController::class);
 });
 
 require __DIR__ . '/auth.php';
