@@ -24,8 +24,10 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orderitems()
+    public function orderItems()
     {
-        return $this->hasMany(OrderItems::class);
+        return $this->belongsToMany(Rock::class, 'order_items')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
     }
 }
