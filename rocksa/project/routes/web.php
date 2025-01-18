@@ -18,7 +18,7 @@ Route::get('/carttest', function () {
 
 Route::get('/carttestlivewire', function () {
     return view('cart-test-livewire');
-});
+})->name('carttestlivewire');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

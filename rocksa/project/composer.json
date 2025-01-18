@@ -41,7 +41,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-	        "TestsCodeception\\": "tests_codeception/"
+            "TestsCodeception\\": "tests_codeception/"
         }
     },
     "scripts": {
