@@ -24,7 +24,7 @@ return new class () extends Migration {
             $table->string('postal_code'); // Postal code
             $table->string('phone_number'); // Customer's phone number
             $table->string('email'); // Customer's email address
-            $table->decimal('total', 10, 2);
+            $table->decimal('total');
             $table->timestamps(); // Created at & updated at timestamp
         });
     }

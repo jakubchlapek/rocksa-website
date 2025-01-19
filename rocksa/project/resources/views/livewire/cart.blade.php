@@ -75,6 +75,12 @@
             <button wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
                 Clear Cart
             </button>
+
+
+                <button wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Proceed to Checkout
+                </button>
+
         </div>
     </div>
 </div>

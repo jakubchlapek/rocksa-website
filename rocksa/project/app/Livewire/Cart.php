@@ -106,4 +106,14 @@ class Cart extends Component
     {
         return view('livewire.cart');
     }
+    public function proceedToCheckout()
+    {
+        if (empty($this->cart)) {
+            session()->flash('error', 'Your cart is empty. Add items before proceeding to checkout.');
+            return;
+        }
+
+        return redirect()->route('orders.create');
+    }
+
 }

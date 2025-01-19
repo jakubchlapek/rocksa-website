@@ -17,6 +17,7 @@ class Order extends Model
         'city',
         'postal_code',
         'phone_number',
+        'total',
         'email'];
 
     public function user()
@@ -24,7 +25,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function items()
+    public function orderItems()
     {
         return $this->hasMany(OrderItems::class);
     }
