@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RockController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('/cardtest', function () {
     return view('card-test');

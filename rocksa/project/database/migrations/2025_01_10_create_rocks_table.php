@@ -12,6 +12,7 @@ return new class () extends Migration {
     {
         Schema::create('rocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description');
             $table->string('main_mineral');
