@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Rock;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-public function index()
-{
-    $categories = Category::where('parent_id', null)->with('children')->get();
+    public function index()
+    {
+        $categories = Category::with('children')->get();
+        $rocks = $categories->children->rocks;
 
-    return view('categories.index', compact('categories'));
-}
+        return view('categories.index', compact('categories', 'rocks'));
+    }
     /**
      * Show the details of a specific category along with its subcategories.
      *
@@ -22,12 +24,10 @@ public function index()
     public function show($slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-
-        // Pobieramy podkategorie danej kategorii
-        $subcategories = $category->children()->get();
+        $rocks = $category->rocks;
+        $subcategories = $category->children;
 
         // Zwracamy widok z kategorią i jej podkategoriami
-        return view('categories.show', compact('category', 'subcategories'));
+        return view('categories.show', compact('category','rocks', 'subcategories'));
     }
 }
-
