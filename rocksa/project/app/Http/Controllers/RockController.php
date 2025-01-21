@@ -31,8 +31,12 @@ class RockController extends Controller
 
     public function show(Rock $rock): View
     {
-        $this->authorizeUser($rock);
-        return view('rocks.show')->with('rock', $rock);
+        $ownerId = $rock->user_id;
+        $isOwner = false;
+        if ($ownerId == auth()->id()) {
+            $isOwner = true;
+        }
+        return view('rocks.show', compact('rock', 'isOwner'));
     }
 
     public function edit(Rock $rock): View

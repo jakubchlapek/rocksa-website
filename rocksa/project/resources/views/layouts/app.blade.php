@@ -17,7 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-    <div class="min-h-screen bg-cover bg-center justify-center" style="background-image: url('{{ asset('static/gradient.jpg') }}')">
+    <div class="min-h-screen bg-cover bg-top justify-center" style="background-image: url('{{ asset('static/gradient_bg.jpg') }}')">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

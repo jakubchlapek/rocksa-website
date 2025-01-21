@@ -68,11 +68,6 @@
                             </tbody>
                         </table>
                     @endif
-                    <form method="GET" action="{{ route('orders.create') }}" class="pt-6">
-                        <x-primary-button>
-                            {{ __('Create new order') }}
-                        </x-primary-button>
-                    </form>
                 </div>
             </div>
         </div>

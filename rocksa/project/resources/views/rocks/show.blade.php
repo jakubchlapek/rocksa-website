@@ -8,16 +8,17 @@
                         <p class="text-xl"><b>Main Mineral: </b>{{ $rock->main_mineral }}</p>
                         <p class="text-xl"><b>Treatment: </b>{{ $rock->treatment }}</p>
                         <p class="text-xl"><b>Weight: </b>{{ $rock->weight }}</p>
-                        <p class="text-xl"><b>Density: </b>{{ $rock->density }}</p>
+                        <p class="text-xl"><b>Density: </b>{{ $rock->density }} <i>g/cm^3</i></p>
                         <p class="text-xl"><b>Color: </b>{{ $rock->color }}</p>
                         <p class="text-xl"><b>Clarity: </b>{{ $rock->clarity }}</p>
-                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }}</p>
+                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }} <i>(in Mohs scale)</i></p>
                         <p class="text-xl"><b>Rarity: </b>{{ $rock->rarity }}</p>
                         <div class="pt-3">
                             <b>Description: </b>@markdown($rock->description)
                         </div>
                         <p class="text-sm text-gray-500 pt-6"><strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}</p>
                     </div>
+                    @if($isOwner)
                     <div class="flex justify-left">
                         <form method="GET" action="{{ route('rocks.edit', $rock) }}" class="pt-6">
                             <x-primary-button>
@@ -32,6 +33,7 @@
                             </x-primary-button>
                         </form>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

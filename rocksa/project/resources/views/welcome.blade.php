@@ -16,7 +16,7 @@
         @endif
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50 m-0">
-        <div class="flex w-full h-screen bg-cover bg-center justify-center" style="background-image: url('{{ asset('static/gradient.jpg') }}')">
+        <div class="flex w-full h-screen bg-cover bg-top justify-center" style="background-image: url('{{ asset('static/gradient_bg.jpg') }}')">
             <x-welcome-container class="flex-grow"></x-welcome-container>
         </div>
     </body>
