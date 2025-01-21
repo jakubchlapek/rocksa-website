@@ -1,4 +1,5 @@
 <x-app-layout>
+    @livewire('cart')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Categories Bar -->
@@ -36,7 +37,7 @@
                 <div class="flex flex-wrap gap-6 p-6 justify-center items-center overflow-visible">
                     @foreach($rocks as $rock)
                         <div class="flex justify-center">
-                            <x-rock-card :data="[
+                            @livewire('rock-card', ['data' => [
                                 'rockId' => $rock->id,
                                 'image' => '/static/amethyst.jpg',
                                 'name' => $rock->title,
@@ -52,7 +53,7 @@
                                             . $rock->description,
                                 'price' => $rock->price,
                                 'moreImages' => ['/static/amethyst.jpg', '/static/amethyst1.jpg', '/static/amethyst2.jpg']
-                            ]" class="w-full h-full"/>
+                            ]])
                         </div>
                     @endforeach
                 </div>
