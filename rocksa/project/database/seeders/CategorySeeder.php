@@ -23,7 +23,7 @@ class CategorySeeder extends Seeder
                 'Gases',
                 'Nonmetals',
             ],
-            'Sulfides and related compounds' => [
+            'Sulfides' => [
                 'Simple sulfides',
                 'Arsenides, tellurides, selenides',
                 'Complex sulfides (sulfosalts)',
@@ -33,12 +33,12 @@ class CategorySeeder extends Seeder
                 'Fluorides',
                 'Bromides and iodides',
             ],
-            'Oxides and hydroxides' => [
+            'Oxides' => [
                 'Simple oxides',
                 'Complex oxides',
                 'Hydroxides',
             ],
-            'Carbonates and nitrates' => [
+            'Carbonates' => [
                 'Simple carbonates',
                 'Complex carbonates',
                 'Nitrates',
@@ -47,13 +47,13 @@ class CategorySeeder extends Seeder
                 'Simple borates',
                 'Complex borates',
             ],
-            'Sulfates, chromates, molybdates, and tungstates' => [
+            'Sulfates' => [
                 'Sulfates',
                 'Chromates',
                 'Molybdates',
                 'Tungstates',
             ],
-            'Phosphates, arsenates, and vanadates' => [
+            'Phosphates' => [
                 'Simple phosphates',
                 'Arsenates',
                 'Vanadates',
