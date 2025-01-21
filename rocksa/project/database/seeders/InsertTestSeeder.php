@@ -25,11 +25,11 @@ class InsertTestSeeder extends Seeder
         ]);
 
 
-        // $quartzImagePath = public_path('/static/rock1.jpg');
-        // $diamondImagePath = public_path('/static/rock2.jpg');
+         // $quartzImagePath = public_path('/static/rock1.jpg');
+         // $diamondImagePath = public_path('/static/rock2.jpg');
 
-        // $quartzImage = file_get_contents($quartzImagePath);
-        // $diamondImage = file_get_contents($diamondImagePath);
+         // $quartzImage = file_get_contents($quartzImagePath);
+         // $diamondImage = file_get_contents($diamondImagePath);
 
 
         // Dodanie kamieni przypisanych do użytkownika

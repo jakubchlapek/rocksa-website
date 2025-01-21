@@ -32,7 +32,12 @@ class RockController extends Controller
 
     public function show(Rock $rock): View
     {
-        return view('rocks.show')->with('rock', $rock);
+        $ownerId = $rock->user_id;
+        $isOwner = false;
+        if ($ownerId == auth()->id()) {
+            $isOwner = true;
+        }
+        return view('rocks.show', compact('rock', 'isOwner'));
     }
 
     public function edit(Rock $rock): View
@@ -43,6 +48,7 @@ class RockController extends Controller
 
     public function update(UpdateRockRequest $request, Rock $rock): RedirectResponse
     {
+        $this->authorizeUser($rock);
         $rock->update($request->validated());
 
         return redirect()->route('rocks.show', $rock);
@@ -50,9 +56,17 @@ class RockController extends Controller
 
     public function destroy(Rock $rock): RedirectResponse
     {
+        $this->authorizeUser($rock);
         $rock->delete();
 
         return redirect()->route('rocks.index');
+    }
+
+    private function authorizeUser(Rock $rock): void
+    {
+        if ($rock->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
     }
 
 }

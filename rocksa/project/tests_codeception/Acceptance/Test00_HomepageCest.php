@@ -12,10 +12,11 @@ class Test00_HomepageCest
 
         $I->amOnPage('/');
 
-        $I->seeInTitle('Laravel');
+        $I->see('Better than women, these rocks smash for free', 'div');
 
-        $I->seeLink("Documentation", "https://laravel.com/docs");
-        $I->seeLink("Laracasts", "https://laracasts.com");
-        $I->seeLink("Forge", "https://forge.laravel.com");
+        $I->see('Login', 'a#login');
+
+        $I->see('Register', 'a#register');
+
     }
 }

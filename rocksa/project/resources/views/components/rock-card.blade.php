@@ -54,7 +54,7 @@
             </div>
             <div class="flex items-center space-x-3">
                 <x-ri-sparkling-fill class="w-6 h-6 text-gray-500" />
-                <h2 class="text-lg font-light">{{ $data['properties'] }}</h2>
+                <h2 class="text-lg font-light">{!! $data['properties'] !!}</h2>
             </div>
         </div>
         <div class="mt-4 text-2xl text-gray-700 font-semibold">
@@ -62,7 +62,7 @@
             <span class="text-green-500">{{ number_format($data['price'], 2) }} €</span>
         </div>
         <div x-show="expanded" x-transition class="mt-4 text-base text-gray-700">
-            <p>{{ $data['description'] }}</p>
+            <p>@html($data['description'])</p>
         </div>
     </div>
 
