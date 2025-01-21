@@ -31,26 +31,36 @@ class RockController extends Controller
 
     public function show(Rock $rock): View
     {
+        $this->authorizeUser($rock);
         return view('rocks.show')->with('rock', $rock);
     }
 
     public function edit(Rock $rock): View
     {
+        $this->authorizeUser($rock);
         return view('rocks.edit')->with('rock', $rock);
     }
 
     public function update(UpdateRockRequest $request, Rock $rock): RedirectResponse
     {
+        $this->authorizeUser($rock);
         $rock->update($request->validated());
-
         return redirect()->route('rocks.show', $rock);
     }
 
     public function destroy(Rock $rock): RedirectResponse
     {
+        $this->authorizeUser($rock);
         $rock->delete();
 
         return redirect()->route('rocks.index');
+    }
+
+    private function authorizeUser(Rock $rock): void
+    {
+        if ($rock->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
     }
 
 }
