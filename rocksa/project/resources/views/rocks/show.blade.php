@@ -17,7 +17,7 @@
                         <div class="pt-3">
                             <b>Description: </b>@markdown($rock->description)
                         </div>
-                        <p class="text-sm text-gray-500 pt-6"><strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}</p>
+                        <p class="text-sm text-gray-500 pt-3"><strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}</p>
                     </div>
 
                     <!-- Akcje edytuj / usuń -->

@@ -7,7 +7,7 @@
         <div class="grid grid-cols-3 gap-4 mt-6">
             @foreach($categories as $category)
                 <div class="border rounded-lg p-4">
-                    <h2 class="font-semibold text-xl">{{ $category->name }}</h2>
+                    <h2 class="font-semibold text-xl hover:text-gray-900 focus:outline-none transition ease-in-out duration-150">{{ $category->name }}</h2>
                     <a href="{{ route('categories.show', $category->slug) }}" class="text-blue-500 hover:underline">View Subcategories</a>
                 </div>
             @endforeach

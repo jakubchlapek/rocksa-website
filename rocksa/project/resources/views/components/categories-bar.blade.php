@@ -1,14 +1,15 @@
 <!-- Categories Bar -->
 <div class="bg-gray-100 shadow-sm sm:rounded-lg mb-[2rem] overflow-visible font-bold text-center items-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex space-x-4 py-3">
+        <div class="flex space-x-4 py-3 justify-center">
             @foreach($categories as $category)
                 <div class="relative group">
                     <!-- Main Category -->
-                    <a href="{{ route('categories.show', $category->slug) }}" class="text-gray-800 hover:text-gray-900 px-4 py-2 rounded-md ">
-                        {{ $category->name }}
-                    </a>
-
+                    <div class="flex justify-center items-center">
+                        <a href="{{ route('categories.show', $category->slug) }}" class="text-gray-800 hover:text-black px-4 py-2 rounded-md focus:outline-none transition ease-in-out duration-150 ">
+                            {{ $category->name }}
+                        </a>
+                    </div>
                     <!-- Subcategories Dropdown -->
                     @if($category->children->isNotEmpty())
                         <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md z-10">

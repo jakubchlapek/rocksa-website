@@ -12,7 +12,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/categories/{slug}', [CategoryController::class, 'show'])
+    ->middleware(['auth', 'verified'])->name('categories.show');
 
 Route::get('/cardtest', function () {
     return view('card-test');

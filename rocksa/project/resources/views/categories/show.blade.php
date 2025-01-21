@@ -9,10 +9,9 @@
 
                     <!-- Display subcategories -->
                     @if($subcategories->count() > 0)
-                        <h2 class="text-xl mt-6"><i>Subcategories</i></h2>
                         <div class="grid grid-cols-4 gap-4 mt-4">
                             @foreach($subcategories as $subcategory)
-                                <div class="border rounded-lg p-4 items-center text-center bg-gray-200">
+                                <div class="border rounded-lg p-4 items-center text-center bg-gray-200 flex justify-center">
                                     <a href="{{ route('categories.show', $subcategory->slug) }}" class="font-semibold text-lg">{{ $subcategory->name }}</a>
                                 </div>
                             @endforeach

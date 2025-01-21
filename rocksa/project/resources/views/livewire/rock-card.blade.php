@@ -102,6 +102,10 @@
                     class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-100 bg-black text-white shadow-lg">
                 <x-ri-image-line class="w-6 h-6" />
             </button>
+            <a href="/rocks/{{ $data['rockId'] }}"
+               class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-200 bg-black hover:bg-gray-600 text-white shadow-lg">
+                <x-ri-chat-3-line class="w-6 h-6" />
+            </a>
         </div>
         <!-- Add/Remove from Cart Button -->
         <button @click="

@@ -65,7 +65,7 @@ class CategorySeeder extends Seeder
                 'Phyllosilicates',
                 'Tektosilicates',
             ],
-            'Organic minerals' => [
+            'Organic' => [
                 'Hydrocarbons',
                 'Salts of organic acids',
                 'Other organic compounds',
