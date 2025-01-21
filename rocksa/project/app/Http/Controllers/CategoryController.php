@@ -8,25 +8,33 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
-        $categories = Category::whereNull('parent_id')->with('children')->get();
-
-        return view('categories.index', compact('categories'));
-    }
-    /**
-     * Show the details of a specific category along with its subcategories.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\View\View
-     */
     public function show($slug)
     {
-        $category = Category::whereNull('parent_id')->with('children')->get();
-        $rocks = $category->rocks;
+        $category = Category::where('slug', $slug)->with('children.rocks')->firstOrFail();
+
+        // Pobierz wszystkie skały z kategorii i jej podkategorii
+        $rocks = $this->getAllRocks($category);
+
+        // Pobierz podkategorie (dla wygody wyświetlania)
         $subcategories = $category->children;
 
-        // Zwracamy widok z kategorią i jej podkategoriami
+        // Zwróć widok z kategorią, skałami i podkategoriami
         return view('categories.show', compact('category', 'rocks', 'subcategories'));
+    }
+    /**
+     * Pobiera wszystkie skały z danej kategorii i jej podkategorii.
+     *
+     * @param  Category $category
+     * @return \Illuminate\Support\Collection
+     */
+    private function getAllRocks(Category $category)
+    {
+        $rocks = $category->rocks;
+
+        $subcategoriesRocks = $category->children->flatMap(function ($subcategory) {
+            return $this->getAllRocks($subcategory);
+        });
+
+        return $rocks->merge($subcategoriesRocks);
     }
 }
