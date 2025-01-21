@@ -36,7 +36,7 @@
                             </x-primary-button>
                         </form>
                     </div>
-
+                    @endif
                     <!-- Sekcja komentarzy -->
                     <div class="pt-12">
                         <h2 class="text-xl font-bold">{{ __('Comments') }}</h2>
@@ -66,8 +66,6 @@
                             </x-primary-button>
                         </div>
                     </form>
-
-                    @endif
                 </div>
             </div>
         </div>
