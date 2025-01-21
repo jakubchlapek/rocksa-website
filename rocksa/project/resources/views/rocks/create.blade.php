@@ -82,6 +82,20 @@
                             </div>
                         </div>
                         <div class="mt-4">
+                            <x-input-label for="category_id" :value="__('Category')"/>
+                            <select id="category_id" name="category_id" class="block mt-1 w-full">
+                                <option value="">{{ __('Select a category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category_id', $rock->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
+                        </div>
+
+                        <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')"/>
                             <x-text-input id="description" class="block mt-1 w-full" type="text" name="description"
                                           :value="old('description')"/>

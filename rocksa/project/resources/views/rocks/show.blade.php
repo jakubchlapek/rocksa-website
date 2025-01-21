@@ -4,6 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
+
                         <p class="text-xl"><b>Listing Title: </b>{{ $rock->title }}</p>
                         <p class="text-xl"><b>Main Mineral: </b>{{ $rock->main_mineral }}</p>
                         <p class="text-xl"><b>Treatment: </b>{{ $rock->treatment }}</p>

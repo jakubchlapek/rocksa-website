@@ -17,7 +17,8 @@ class RockController extends Controller
 
     public function create(): View
     {
-        return view('rocks.create');
+        $categories = \App\Models\Category::all(); // Pobierz wszystkie kategorie
+        return view('rocks.create', compact('categories'));
     }
 
     public function store(StoreRockRequest $request): RedirectResponse
@@ -36,7 +37,8 @@ class RockController extends Controller
 
     public function edit(Rock $rock): View
     {
-        return view('rocks.edit')->with('rock', $rock);
+        $categories = \App\Models\Category::all(); // Pobierz wszystkie kategorie
+        return view('rocks.edit', compact('rock', 'categories'));
     }
 
     public function update(UpdateRockRequest $request, Rock $rock): RedirectResponse
