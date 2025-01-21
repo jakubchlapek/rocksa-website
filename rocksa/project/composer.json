@@ -7,11 +7,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "andreiio/blade-remix-icon": "^3.6",
         "graham-campbell/markdown": "^15.2",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.5"
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "codeception/codeception": "^5.1",
