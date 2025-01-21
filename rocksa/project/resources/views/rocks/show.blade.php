@@ -18,6 +18,7 @@
                         </div>
                         <p class="text-sm text-gray-500 pt-6"><strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}</p>
                     </div>
+                    @if($isOwner)
                     <div class="flex justify-left">
                         <form method="GET" action="{{ route('rocks.edit', $rock) }}" class="pt-6">
                             <x-primary-button>
@@ -32,6 +33,7 @@
                             </x-primary-button>
                         </form>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
