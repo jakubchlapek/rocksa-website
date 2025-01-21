@@ -9,11 +9,13 @@
 
                     <!-- Display subcategories -->
                     @if($subcategories->count() > 0)
-                        <div class="grid grid-cols-4 gap-4 mt-4">
+                        <div class="grid grid-cols-4 gap-4 mt-6 px-20">
                             @foreach($subcategories as $subcategory)
-                                <div class="border rounded-lg p-4 items-center text-center bg-gray-200 flex justify-center">
-                                    <a href="{{ route('categories.show', $subcategory->slug) }}" class="font-semibold text-lg">{{ $subcategory->name }}</a>
-                                </div>
+                                <button class="inline-flex items-center justify-center py-3 border border-transparent text-2xl leading-4 font-medium rounded-md text-gray-900 bg-gray-100 focus:border-blue-300 focus:border-2 hover:text-black focus:outline-none transition ease-in-out duration-150">
+                                    <div class="items-center text-center flex justify-center">
+                                        <a href="{{ route('categories.show', $subcategory->slug) }}" class="font-semibold text-lg">{{ $subcategory->name }}</a>
+                                    </div>
+                                </button>
                             @endforeach
                         </div>
                     @else
