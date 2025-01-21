@@ -14,6 +14,7 @@
         <!-- Scripts -->
         @livewireStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js" defer></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-cover bg-center justify-center" style="background-image: url('{{ asset('static/gradient.jpg') }}')">
