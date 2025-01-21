@@ -15,7 +15,7 @@ class RockDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('name', 'John Doe')->first();
+        $user = User::where('name', 'szubamaolbrzymiego')->first();
         $categories = Category::all();
 
         // Przykładowe dane dla skał
