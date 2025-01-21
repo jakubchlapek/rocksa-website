@@ -48,7 +48,6 @@ class CategorySeeder extends Seeder
                 'Complex borates',
             ],
             'Sulfates' => [
-                'Sulfates',
                 'Chromates',
                 'Molybdates',
                 'Tungstates',
