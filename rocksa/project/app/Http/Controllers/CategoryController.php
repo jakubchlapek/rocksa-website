@@ -10,6 +10,8 @@ class CategoryController extends Controller
 {
     public function show($slug)
     {
+        $categories = Category::whereNull('parent_id')->with('children')->get();
+
         $category = Category::where('slug', $slug)->with('children.rocks')->firstOrFail();
 
         // Pobierz wszystkie skały z kategorii i jej podkategorii
@@ -19,7 +21,7 @@ class CategoryController extends Controller
         $subcategories = $category->children;
 
         // Zwróć widok z kategorią, skałami i podkategoriami
-        return view('categories.show', compact('category', 'rocks', 'subcategories'));
+        return view('categories.show', compact('category', 'rocks', 'subcategories', 'categories'));
     }
     /**
      * Pobiera wszystkie skały z danej kategorii i jej podkategorii.
