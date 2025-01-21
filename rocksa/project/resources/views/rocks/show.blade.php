@@ -8,10 +8,10 @@
                         <p class="text-xl"><b>Main Mineral: </b>{{ $rock->main_mineral }}</p>
                         <p class="text-xl"><b>Treatment: </b>{{ $rock->treatment }}</p>
                         <p class="text-xl"><b>Weight: </b>{{ $rock->weight }}</p>
-                        <p class="text-xl"><b>Density: </b>{{ $rock->density }}</p>
+                        <p class="text-xl"><b>Density: </b>{{ $rock->density }} <i>g/cm^3</i></p>
                         <p class="text-xl"><b>Color: </b>{{ $rock->color }}</p>
                         <p class="text-xl"><b>Clarity: </b>{{ $rock->clarity }}</p>
-                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }}</p>
+                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }} <i>(in Mohs scale)</i></p>
                         <p class="text-xl"><b>Rarity: </b>{{ $rock->rarity }}</p>
                         <div class="pt-3">
                             <b>Description: </b>@markdown($rock->description)
