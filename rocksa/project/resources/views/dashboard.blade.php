@@ -3,13 +3,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Categories Bar -->
-            <div class="bg-gray-100">
+            <div class="bg-gray-100 shadow-sm sm:rounded-lg mb-[2rem] overflow-visible font-bold text-center items-center">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex space-x-4 py-3 overflow-x-auto">
+                    <div class="flex space-x-4 py-3">
                         @foreach($categories as $category)
                             <div class="relative group">
                                 <!-- Main Category -->
-                                <a href="{{ route('categories.show', $category->slug) }}" class="text-gray-800 hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium">
+                                <a href="{{ route('categories.show', $category->slug) }}" class="text-gray-800 hover:text-gray-900 px-4 py-2 rounded-md ">
                                     {{ $category->name }}
                                 </a>
 
@@ -56,13 +56,6 @@
                             ]])
                         </div>
                     @endforeach
-                </div>
-                <!-- Dodanie guzika -->
-                <div class="mt-4 text-center">
-                    <a href="{{ route('carttestlivewire') }}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Go to Cart Test Livewire
-                    </a>
                 </div>
             </div>
         </div>
