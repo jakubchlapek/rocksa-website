@@ -45,10 +45,10 @@
                     <div class="mt-5 rounded-2xl space-y-5 p-5 bg-gray-100">
                         <h2 class="text-xl font-bold">{{ __('Comments') }}</h2>
                         @forelse($rock->comments as $comment)
-                            @if($comment->parent == null)
-                                <div class="block rounded-2xl bg-red-200">
+                            @if(!$comment->parent)
+                                <div class="block rounded-2xl bg-white ring-2 ring-gray-300 p-2">
                                     <!-- Parent Comment -->
-                                    <div class="border-t p-2 px-5 rounded-xl bg-gray-200">
+                                    <div class="border-t p-2 px-5 mb-2 rounded-xl bg-gray-200">
                                         <p class="text-sm text-gray-500 mb-2">
                                             <strong>{{ $comment->user->name }}</strong> - {{ $comment->created_at->format('M d, Y H:i') }}
                                         </p>
@@ -56,30 +56,29 @@
                                     </div>
 
                                     <!-- Child Comments -->
-                                    <div class="p-2 rounded-xl space-y-2">
+                                    <div class="pl-5 rounded-xl space-y-2">
                                         @forelse($comment->children as $child)
-                                            <div class="p-2 px-5 rounded-xl bg-red-300">
+                                            <div class="p-2 px-5 rounded-xl bg-gray-300">
                                                 <p class="text-sm text-gray-500">
                                                     <strong>{{ $child->user->name }}</strong> - {{ $child->created_at->format('M d, Y H:i') }}
                                                 </p>
                                                 <p>{{ $child->content }}</p>
                                             </div>
                                         @empty
-                                            <p class="text-gray-500">{{ __('No replies yet.') }}</p>
                                         @endforelse
                                     </div>
 
                                     <!-- Reply Button -->
-                                    <div x-data="{ showReplyForm: false }" class="mt-5">
-                                        <div class="flex w-32 flex-row p-1 px-2 bg-gray-300 rounded-2xl items-center justify-between">
+                                    <div x-data="{ showReplyForm: false }" class="block p-2 mt-2 ">
+                                        <div class="flex flex-row w-24 flex-row p-1 px-2 bg-gray-300 rounded-2xl items-center justify-between">
                                             <x-ri-chat-ai-line class="w-6 h-6" />
                                             <button @click="showReplyForm = !showReplyForm" class="focus:outline-none">
-                                                {{ __('Add Reply') }}
+                                                {{ __('Reply') }}
                                             </button>
                                         </div>
 
                                         <!-- Reply Form -->
-                                        <div x-show="showReplyForm" class="mt-3 bg-gray-100 p-4 rounded-lg ring-2 ring-gray-500">
+                                        <div x-show="showReplyForm" class="mt-3 bg-gray-100 p-4 transition-transform duration-300 ease-in-out rounded-lg ring-2 ring-gray-500">
                                             <form method="POST" action="{{ route('comments.store', $rock) }}">
                                                 @csrf
                                                 <!-- Parent Comment ID -->
