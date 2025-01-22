@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="py-12">
+        @livewire('cart')
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <x-categories-bar :categories="$categories"></x-categories-bar>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

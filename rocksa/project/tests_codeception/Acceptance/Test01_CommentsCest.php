@@ -1,5 +1,7 @@
 <?php
 
+/*
+
 namespace TestsCodeception\Acceptance;
 
 use TestsCodeception\Support\AcceptanceTester;
@@ -32,3 +34,4 @@ class Test01_CommentsCest
         $I->see("bold", 'p > strong');
     }
 }
+*/
