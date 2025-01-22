@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h1 class="font-bold text-2xl">Create a rock!</h1>
-                    <form method="POST" action="{{ route('rocks.store') }}">
+                    <form method="POST" action="{{ route('rocks.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="flex flex-row gap-4">
@@ -81,6 +81,14 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Dodanie pola do przesyłania obrazu -->
+                        <div class="mt-4">
+                            <x-input-label for="image" :value="__('Image (optional)')" />
+                            <input type="file" name="image" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                        </div>
+
                         <div class="mt-4">
                             <x-input-label for="category_id" :value="__('Category')"/>
                             <select id="category_id" name="category_id" class="block mt-1 w-full">
@@ -102,16 +110,13 @@
                             <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                         </div>
 
-
                         <div class="flex items-center justify-end mt-4">
                             <x-primary-button class="ms-4">
                                 {{ __('Create') }}
                             </x-primary-button>
                         </div>
 
-
                     </form>
-
                 </div>
             </div>
         </div>

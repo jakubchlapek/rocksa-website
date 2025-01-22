@@ -62,7 +62,7 @@
 
     <!-- Main Image -->
     <div class="relative rounded-2xl w-full h-[20rem] overflow-hidden shadow-lg">
-        <img src="{{ asset($data['image']) }}" alt="image" class="object-cover w-full h-full">
+        <img src="{{$data['image']}}" alt="Rock Image">
     </div>
 
     <div class="flex flex-col p-5">

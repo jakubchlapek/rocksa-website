@@ -25,7 +25,7 @@ return new class () extends Migration {
             $table->float('toughness');
             $table->string('rarity');
             $table->float('price');
-            // $table->binary('image');
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

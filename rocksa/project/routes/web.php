@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/rocks/{rock}/comments', [CommentController::class, 'store'])->name('comments.store');
 
     Route::resource('rocks', RockController::class);
+    Route::post('rocks/{rock}/images', [ImageController::class, 'store'])->name('images.store');
     Route::resource('orders', OrderController::class);
 
 

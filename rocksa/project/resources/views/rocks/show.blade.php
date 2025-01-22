@@ -17,6 +17,7 @@
                         <div class="pt-3">
                             <b>Description: </b>@markdown($rock->description)
                         </div>
+                        <img src="data:image/{{ pathinfo($rock->image, PATHINFO_EXTENSION) }};base64,{{ $rock->image }}" alt="Rock Image">
                         <p class="text-sm text-gray-500 pt-3">
                             <strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}
                         </p>

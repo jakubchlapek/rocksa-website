@@ -11,7 +11,7 @@ class Rock extends Model
      *
      * @inheritdoc
      */
-    protected $fillable = ['user_id', 'title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
+    protected $fillable = ['user_id', 'category_id', 'image', 'title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
 
     public function orderItems()
     {
@@ -31,7 +31,10 @@ class Rock extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function images()
+    {
+        return $this->hasMany(Image::class); // Jeden kamień ma wiele obrazów
+    }
 
 
 }

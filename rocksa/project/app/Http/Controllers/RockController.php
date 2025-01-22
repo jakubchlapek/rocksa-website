@@ -24,11 +24,21 @@ class RockController extends Controller
     public function store(StoreRockRequest $request): RedirectResponse
     {
         $data = $request->validated();
+
         $data['user_id'] = auth()->id();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->getRealPath();
+            $imageBase64 = base64_encode(file_get_contents($imagePath));
+
+            $data['image'] = $imageBase64;
+        }
         $rock = Rock::create($data);
+
 
         return redirect()->route('rocks.show', $rock);
     }
+
 
     public function show(Rock $rock): View
     {

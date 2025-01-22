@@ -10,7 +10,7 @@
                         <div class="flex justify-center">
                             @livewire('rock-card', ['data' => [
                                 'rockId' => $rock->id,
-                                'image' => '/static/amethyst.jpg',
+                                'image' => 'data:image/{{ pathinfo($rock->image, PATHINFO_EXTENSION) }};base64,{{ $rock->image }}',
                                 'name' => $rock->title,
                                 'color' => $rock->color,
                                 'origin' => $rock->country_of_origin,
