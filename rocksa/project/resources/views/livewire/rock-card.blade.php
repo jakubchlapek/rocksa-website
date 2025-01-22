@@ -32,10 +32,11 @@
     <!-- Full-Screen Image View -->
     <div x-show="fullScreenImage"
          @click="fullScreenImage = null"
-         class="fixed inset-0 bg-black bg-opacity-90 flex p-5 justify-center items-center z-[60]">
+         class="fixed inset-0 bg-black bg-opacity-90 flex p-5 justify-center items-center z-[60]"
+    >
         <div @click.stop >
             <img :src="fullScreenImage" class="object-contain h-[90dvh] p-5">
-            <button @click="fullScreenImage = null" class="absolute hover:scale-125 top-2 right-2 p-2 text-white">
+            <button alt="closeFullScreenImage" @click="fullScreenImage = null" class="absolute hover:scale-125 top-2 right-2 p-2 text-white">
                 <x-ri-close-line class="w-6 h-6" />
             </button>
         </div>
@@ -54,7 +55,7 @@
                     </div>
                 @endforeach
             </div>
-            <button @click="showImageGallery = false" class="absolute hover:scale-125 top-2 right-2 p-2 text-gray-700">
+            <button alt="closeImageGallery" @click="showImageGallery = false" class="absolute hover:scale-125 top-2 right-2 p-2 text-gray-700">
                 <x-ri-close-line class="w-6 h-6" />
             </button>
         </div>
@@ -93,11 +94,13 @@
     <div class="flex justify-between items-center px-5 pb-5">
         <div class="flex space-x-3">
             <button @click="expanded = !expanded"
+                    alt="expandButton"
                     :class="{'bg-blue-500': expanded, 'bg-black hover:bg-gray-600': !expanded}"
                     class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-100 bg-black text-white shadow-lg">
                 <x-ri-search-2-line class="w-6 h-6" />
             </button>
             <button @click="showImageGallery = !showImageGallery"
+                    alt="showImageGalleryButton"
                     :class="{'bg-blue-500': showImageGallery, 'bg-black hover:bg-gray-600': !showImageGallery}"
                     class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-100 bg-black text-white shadow-lg">
                 <x-ri-image-line class="w-6 h-6" />
@@ -123,6 +126,7 @@
             'bg-black hover:bg-gray-600': !inCart
         }"
                 class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-200 text-white shadow-lg"
+                alt="addremoveCartButton"
                 x-data="{ hovering: false, timer: null }">
             <!-- Default "Add" Icon -->
             <span x-show="!inCart">

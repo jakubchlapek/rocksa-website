@@ -1,6 +1,6 @@
-<div x-data="{ isOpen: $wire.entangle('isOpen') }" class="relative">
+<div x-data="{ isOpen: $wire.entangle('isOpen') }" class="relative z-[80]">
     <!-- Cart Icon Button -->
-    <button wire:click="toggleCart" class="fixed top-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-110">
+    <button wire:click="toggleCart" alt="toggleCartButton" class="fixed top-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-110">
         <x-ri-shopping-cart-line class="w-8 h-8" />
     </button>
 
@@ -19,6 +19,7 @@
         <!-- Close Button (X) -->
         <button
             @click="isOpen = false"
+            alt="closeCartButton"
             class="absolute top-4 right-4 text-3xl text-gray-600 hover:text-gray-900 transition duration-200"
         >
             &times;
@@ -43,6 +44,7 @@
                         <div class="flex items-center space-x-2">
                             <!-- Increase Quantity -->
                             <button
+                                alt="increaseQuantityButton"
                                 wire:click="updateQuantity({{ $productId }}, 1)"
                                 class="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition duration-200"
                             >
@@ -50,6 +52,7 @@
                             </button>
                             <!-- Decrease Quantity -->
                             <button
+                                alt="decreaseQuantityButton"
                                 wire:click="updateQuantity({{ $productId }}, -1)"
                                 class="bg-yellow-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-600 transition duration-200"
                             >
@@ -57,6 +60,7 @@
                             </button>
                         </div>
                         <button
+                            alt="removeFromCartButton"
                             wire:click="handleRemoveFromCart({{ $productId }})"
                             class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-600 transition duration-200"
                         >
@@ -72,12 +76,12 @@
             <p class="text-gray-900 font-semibold text-lg">
                 Total: ${{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
             </p>
-            <button wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
+            <button alt="clearCartButton" wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
                 Clear Cart
             </button>
 
 
-                <button wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button alt="checkoutButton" wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                     Proceed to Checkout
                 </button>
 
