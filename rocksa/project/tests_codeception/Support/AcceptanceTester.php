@@ -30,8 +30,8 @@ class AcceptanceTester extends \Codeception\Actor
     public function logIn(): void
     {
         $this->seeCurrentUrlEquals('/login');
-        $this->fillField('email', 'john.doe@gmail.com');
-        $this->fillField('password', 'secret');
+        $this->fillField('email', 'SzubaMaOlbrzymiego@gmail.com');
+        $this->fillField('password', '12345678');
         $this->waitForNextPage(fn () => $this->click('Log in'));
     }
 

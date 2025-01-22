@@ -4,11 +4,11 @@ namespace TestsCodeception\Acceptance;
 
 use TestsCodeception\Support\AcceptanceTester;
 
-class Test02_LoginCest
+class Test06_CartCest
 {
     public function test(AcceptanceTester $I): void
     {
-        $I->wantTo('login with existing user');
+        $I->wantTo('add rocks to the cart');
 
         $I->amOnPage('/dashboard');
 
@@ -16,7 +16,8 @@ class Test02_LoginCest
 
         $I->seeCurrentUrlEquals('/dashboard');
 
-        $I->see('szubamaolbrzymiego');
-        // $I->see("You're logged in!");
+        $I->see('Listings');
+
+        $I->click("#add-to-cart-button");
     }
 }
