@@ -49,7 +49,6 @@ class Test03_RocksCest
         $rockDescription = "Ultra cool diamond straight from Brazil";
 
 
-        // $I->fillField('isbn', 'string');
         $I->fillField('title', $rockTitle);
         $I->fillField('Main Mineral', $mainMineral);
         $I->fillField('Weight', $weight);
@@ -106,7 +105,6 @@ class Test03_RocksCest
         $I->see((string)$weight);
         $I->see((string)$density);
         $I->see($color);
-        // $I->see((string)$price);
         $I->see($clarity);
         $I->see((string)$toughness);
         $I->see($rarity);
@@ -114,11 +112,9 @@ class Test03_RocksCest
         $I->see($countryOfOrigin);
 
 
-
         $I->amOnPage('/rocks');
 
 
-        // $I->see("$bookIsbn", 'tr > td');
         $I->see("$rockTitle", 'tr > td');
         $I->see("$mainMineral", 'tr > td');
         $I->see("$treatment", 'tr > td');
@@ -134,9 +130,7 @@ class Test03_RocksCest
         $I->waitForNextPage(fn () => $I->click('Edit'));
 
         $I->seeCurrentUrlEquals('/rocks/' . $id . '/edit');
-        // $I->see('Editing a book', 'h2');
 
-        // $I->seeInField('isbn', $bookIsbn);
         $I->seeInField('title', $rockTitle);
         $I->seeInField('main_mineral', $mainMineral);
         $I->seeInField('weight', (string)$weight);
@@ -176,7 +170,6 @@ class Test03_RocksCest
 
         $I->waitForNextPage(fn () => $I->click('Delete'));
 
-        // $I->see('There are no rocks in the database.');
 
         $I->dontSeeInDatabase('rocks', [
             'title' => $rockTitle,

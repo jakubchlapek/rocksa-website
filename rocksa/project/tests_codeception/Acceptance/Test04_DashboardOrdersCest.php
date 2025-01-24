@@ -4,7 +4,7 @@ namespace TestsCodeception\Acceptance;
 
 use TestsCodeception\Support\AcceptanceTester;
 
-class Test04_DashboardCest
+class Test04_DashboardOrdersCest
 {
     public function test(AcceptanceTester $I): void
     {
@@ -14,7 +14,6 @@ class Test04_DashboardCest
 
         $I->logIn();
 
-        // test for rocks categories listings
         $I->see("Elements");
         $I->see("Sulfides");
         $I->see("Halides");
@@ -23,21 +22,16 @@ class Test04_DashboardCest
         $I->see("Borates");
         $I->see("Sulfates");
 
-        // test for filtering rocks by category
         $I->waitForNextPage(fn () => $I->click('Halides'));
         $I->seeCurrentUrlEquals('/categories/halides');
         $I->see('Halides');
-        // $I->click('Native Metals');
         $I->see('Halite');
         $I->see('Fluorite');
 
         // test for cart
         $I->click('//button[@alt="toggleCartButton"]');
-        // $I->waitForNextPage(fn () => $I->click('//button[@alt="toggleCartButton"]'));
         $I->wait(1);
         $I->see('Your cart is empty.');
-        // $I->waitForNextPage(fn () => $I->click('//button[@alt="closeCartButton"]'));
-        // $I->wait(1);
         $I->click('//button[@alt="closeCartButton"]');
         $I->wait(1);
         $I->click('(//button[@alt="addremoveCartButton"])[1]');
@@ -54,12 +48,7 @@ class Test04_DashboardCest
         $I->see('Total: $10');
         $I->click('//button[@alt="checkoutButton"]');
 
-        // orders test
-        // $I->wantTo('have orders page');
 
-        // $I->amOnPage('/orders/create');
-
-        // $I->logIn();
         $I->wait(1);
         $I->seeCurrentUrlEquals('/orders/create');
 
@@ -106,9 +95,9 @@ class Test04_DashboardCest
         ]);
         /*
         /** @var string $id */
-        /*
+
         $id = $I->grabFromDatabase('orders', 'id', [
-        'first_name' => $firstName,
+            'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $testEmail,
             'phone_number' => $testPhone,
@@ -120,8 +109,41 @@ class Test04_DashboardCest
         $I->seeCurrentUrlEquals('/orders/' . $id);
         $I->see($firstName);
         $I->see($lastName);
+        $I->see($testCity);
         $I->see($testEmail);
-        // $I->see($I);
-        */
+        $I->see($testStreet);
+        $I->see($testPhone);
+        $I->see('Total: $10.00');
+        $I->see($testPostalCode);
+
+        $I->amOnPage('/orders/');
+
+        $I->see("$firstName", 'tr > td');
+        $I->see("$lastName", 'tr > td');
+        $I->see("$testCity", 'tr > td');
+        $I->see("$testStreet", 'tr > td');
+        $I->see("$testPostalCode", 'tr > td');
+        $I->see("$testEmail", 'tr > td');
+        $I->see("$testPhone", 'tr > td');
+
+        $I->maximizeWindow();
+
+        $I->waitForNextPage(fn () => $I->click('Details'));
+
+        $I->seeCurrentUrlEquals('/orders/' . $id);
+
+        $I->waitForNextPage(fn () => $I->click('Delete'));
+
+        $I->dontSeeInDatabase('orders', [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $testEmail,
+            'phone_number' => $testPhone,
+            'street' => $testStreet,
+            'city' => $testCity,
+            'postal_code' => $testPostalCode
+        ]);
+
+
     }
 }
