@@ -17,9 +17,8 @@
                         <div class="pt-3">
                             <b>Description: </b>@markdown($rock->description)
                         </div>
-                        {{$rock->main_image}}
+                        <x-images-gallery :rock="$rock"></x-images-gallery>
 
-                        {{$rock->image_1}}
                         <p class="text-sm text-gray-500 pt-3">
                             <strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}
                         </p>
