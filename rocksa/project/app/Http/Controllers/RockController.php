@@ -27,12 +27,16 @@ class RockController extends Controller
 
         $data['user_id'] = auth()->id();
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->getRealPath();
-            $imageBase64 = base64_encode(file_get_contents($imagePath));
+        $imageFields = ['main_image', 'image_1', 'image_2', 'image_3'];
 
-            $data['image'] = $imageBase64;
+        foreach ($imageFields as $field) {
+            if ($request->hasFile($field)) {
+                $imagePath = $request->file($field)->getRealPath();
+                $imageBase64 = base64_encode(file_get_contents($imagePath));
+                $data[$field] = $imageBase64;
+            }
         }
+
         $rock = Rock::create($data);
 
 

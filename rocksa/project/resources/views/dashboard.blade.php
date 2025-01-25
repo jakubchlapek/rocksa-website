@@ -9,7 +9,7 @@
                         <div class="flex justify-center">
                             @livewire('rock-card', ['data' => [
                                 'rockId' => $rock->id,
-                                'image' => $rock->image,
+                                'image' => $rock->main_image,
                                 'name' => $rock->title,
                                 'color' => $rock->color,
                                 'origin' => $rock->country_of_origin,

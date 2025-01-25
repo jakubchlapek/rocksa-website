@@ -84,9 +84,24 @@
 
                         <!-- Dodanie pola do przesyłania obrazu -->
                         <div class="mt-4">
-                            <x-input-label for="image" :value="__('Image (optional)')" />
-                            <input type="file" name="image" class="block mt-1 w-full" />
-                            <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                            <x-input-label for="main_image" :value="__('Main Image (optional)')" />
+                            <input type="file" name="main_image" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('main_image')" class="mt-2" />
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="image_1" :value="__('Image 1 (optional)')" />
+                            <input type="file" name="image_1" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="image_1" :value="__('Image 2 (optional)')" />
+                            <input type="file" name="image_1" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="image_1" :value="__('Image 3 (optional)')" />
+                            <input type="file" name="image_1" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">

@@ -11,7 +11,7 @@ class Rock extends Model
      *
      * @inheritdoc
      */
-    protected $fillable = ['user_id', 'category_id', 'image', 'title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
+    protected $fillable = ['user_id', 'category_id', 'main_image', 'image_1', 'image_2', 'image_3', 'title', 'description', 'main_mineral', 'treatment', 'country_of_origin', 'weight', 'density', 'color', 'clarity', 'toughness', 'rarity', 'price'];
 
     public function orderItems()
     {
