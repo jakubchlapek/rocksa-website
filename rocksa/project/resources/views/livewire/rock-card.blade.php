@@ -51,7 +51,7 @@
             <div class="grid grid-cols-3 gap-5">
                 @foreach ($data['moreImages'] as $moreImage)
                     <div class="cursor-pointer" @click="fullScreenImage = '{{ asset($moreImage) }}'">
-                        <img src="{{ asset($moreImage) }}" alt="Image" class="w-[400px] h-[400px] transition-all duration-200 hover:shadow-lg hover:scale-[102%] object-cover rounded-xl">
+                        <img src="data:image/{{ pathinfo($moreImage, PATHINFO_EXTENSION) }};base64,{{ $moreImage }}" alt="Image" class="w-[400px] h-[400px] transition-all duration-200 hover:shadow-lg hover:scale-[102%] object-cover rounded-xl">
                     </div>
                 @endforeach
             </div>
@@ -113,7 +113,7 @@
         <!-- Add/Remove from Cart Button -->
         <button @click="
         if (!inCart) {
-            Livewire.dispatch('addToCart', [{{ $data['rockId'] }}, '{{ $data['name'] }}', {{ $data['price'] }}, '{{ $data['image'] }}'] );
+            Livewire.dispatch('addToCart', [{{ $data['rockId'] }}, '{{ $data['name'] }}', {{ $data['price'] }}, '{{ $data['main_image'] }}'] );
         } else {
             Livewire.dispatch('removeFromCart', [{{ $data['rockId'] }}]);
         }

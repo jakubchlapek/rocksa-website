@@ -82,6 +82,42 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Dodanie pola do przesyłania obrazu -->
+                        <div class="mt-4">
+                            <x-input-label for="main_image" :value="__('Main Image (optional)')" />
+                            <input type="file" name="main_image" class="block mt-1 w-full"/>
+                            <x-input-error :messages="$errors->get('main_image')" class="mt-2" />
+                            @if ($rock->main_image)
+                                <img src="data:image/{{ pathinfo($rock->main_image, PATHINFO_EXTENSION) }};base64,{{ $rock->main_image }}" alt="Main Image" width="200">
+                            @endif
+                        </div>
+
+                        <div class="mt-4">
+                            <x-input-label for="image_1" :value="__('Image 1 (optional)')" />
+                            <input type="file" name="image_1" class="block mt-1 w-full"/>
+                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                            @if ($rock->image_1)
+                                <img src="data:image/{{ pathinfo($rock->image_1, PATHINFO_EXTENSION) }};base64,{{ $rock->image_1 }}" alt="1 Image" width="200">
+                            @endif
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="image_2" :value="__('Image 2 (optional)')" />
+                            <input type="file" name="image_2" class="block mt-1 w-full"/>
+                            <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
+                            @if ($rock->image_2)
+                                <img src="data:image/{{ pathinfo($rock->image_2, PATHINFO_EXTENSION) }};base64,{{ $rock->image_2 }}" alt="2 Image" width="200">
+                            @endif
+                        </div>
+                        <div class="mt-4">
+                            <x-input-label for="image_3" :value="__('Image 3 (optional)')" />
+                            <input type="file" name="image_3" class="block mt-1 w-full"/>
+                            <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
+                            @if ($rock->image_3)
+                                <img src="data:image/{{ pathinfo($rock->image_3, PATHINFO_EXTENSION) }};base64,{{ $rock->image_3 }}" alt="3 Image" width="200">
+                            @endif
+                        </div>
+
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')"/>
                             <x-text-input id="description" class="block mt-1 w-full" type="text" name="description"

@@ -9,7 +9,7 @@
                         <div class="flex justify-center">
                             @livewire('rock-card', ['data' => [
                                 'rockId' => $rock->id,
-                                'image' => $rock->main_image,
+                                'main_image' => $rock->main_image,
                                 'name' => $rock->title,
                                 'color' => $rock->color,
                                 'origin' => $rock->country_of_origin,
@@ -22,7 +22,7 @@
                             $rock->description
                             ]),
                                 'price' => $rock->price,
-                                'moreImages' => ['/static/amethyst.jpg', '/static/amethyst1.jpg', '/static/amethyst2.jpg']
+                                'moreImages' => [$rock->image_1, $rock->image_2, $rock->image_3]
                             ]])
                         </div>
                     @endforeach

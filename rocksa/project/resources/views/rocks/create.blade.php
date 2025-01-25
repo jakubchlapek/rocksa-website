@@ -94,14 +94,14 @@
                             <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
                         </div>
                         <div class="mt-4">
-                            <x-input-label for="image_1" :value="__('Image 2 (optional)')" />
-                            <input type="file" name="image_1" class="block mt-1 w-full" />
-                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                            <x-input-label for="image_2" :value="__('Image 2 (optional)')" />
+                            <input type="file" name="image_2" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image_2')" class="mt-2" />
                         </div>
                         <div class="mt-4">
-                            <x-input-label for="image_1" :value="__('Image 3 (optional)')" />
-                            <input type="file" name="image_1" class="block mt-1 w-full" />
-                            <x-input-error :messages="$errors->get('image_1')" class="mt-2" />
+                            <x-input-label for="image_3" :value="__('Image 3 (optional)')" />
+                            <input type="file" name="image_3" class="block mt-1 w-full" />
+                            <x-input-error :messages="$errors->get('image_3')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">
