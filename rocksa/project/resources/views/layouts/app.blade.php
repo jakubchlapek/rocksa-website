@@ -31,6 +31,7 @@
 
             <!-- Page Content -->
             <main>
+                @livewire('cart')
                 {{ $slot }}
             </main>
         </div>
