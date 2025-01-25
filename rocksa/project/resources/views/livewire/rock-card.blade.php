@@ -63,7 +63,7 @@
 
     <!-- Main Image -->
     <div class="relative rounded-2xl w-full h-[20rem] overflow-hidden shadow-lg">
-        <img src="{{$data['image']}}" alt="Rock Image">
+        <img src="data:image/{{ pathinfo($data['image'], PATHINFO_EXTENSION) }};base64,{{ $data['image'] }}" alt="Rock Image" onerror="this.src='/static/amethyst.jpg'" class="transition-all duration-200 hover:shadow-lg hover:scale-[102%] object-cover w-full h-full rounded-xl">
     </div>
 
     <div class="flex flex-col p-5">

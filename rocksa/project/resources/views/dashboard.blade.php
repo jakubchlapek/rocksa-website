@@ -9,18 +9,18 @@
                         <div class="flex justify-center">
                             @livewire('rock-card', ['data' => [
                                 'rockId' => $rock->id,
-                                'image' => 'data:image/{{ pathinfo($rock->image, PATHINFO_EXTENSION) }};base64,{{ $rock->image }}',
+                                'image' => $rock->image,
                                 'name' => $rock->title,
                                 'color' => $rock->color,
                                 'origin' => $rock->country_of_origin,
                                 'properties' => 'Mineral: ' . $rock->main_mineral . ',<br>'
                                             . 'Weight: ' . $rock->weight . 'g,<br>'
                                             . 'Treatment: ' . $rock->treatment . '<br>',
-                                'description' => 'Clarity: ' . $rock->clarity . '&emsp;&emsp;'
-                                            . 'Rarity: ' . $rock->rarity . '<br>'
-                                            . 'Density: ' . $rock->density . 'g/cm^3&emsp;&emsp;'
-                                            . 'Toughness: ' . $rock->toughness . ' (in Mohs scale)<br>'
-                                            . $rock->description,
+                                'description' => implode('<br>', [
+                            'Clarity: ' . $rock->clarity . '&emsp;&emsp;Rarity: ' . $rock->rarity,
+                            'Density: ' . $rock->density . 'g/cm^3&emsp;&emsp;Toughness: ' . $rock->toughness . ' (in Mohs scale)',
+                            $rock->description
+                            ]),
                                 'price' => $rock->price,
                                 'moreImages' => ['/static/amethyst.jpg', '/static/amethyst1.jpg', '/static/amethyst2.jpg']
                             ]])
