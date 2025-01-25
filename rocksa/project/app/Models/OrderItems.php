@@ -22,7 +22,7 @@ class OrderItems extends Model
 
     public function rocks(){
 
-        return $this -> belongsTo(Rock::class);
+        return $this -> belongsTo(Rock::class, 'rock_id');
 
     }
 

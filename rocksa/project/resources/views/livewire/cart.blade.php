@@ -76,12 +76,12 @@
             <p class="text-gray-900 font-semibold text-lg">
                 Total: ${{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
             </p>
-            <button alt="clearCartButton" wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
+            <button alt="clearCartButton" wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 mx-5 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
                 Clear Cart
             </button>
 
 
-                <button alt="checkoutButton" wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <button alt="checkoutButton" wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">
                     Proceed to Checkout
                 </button>
 
