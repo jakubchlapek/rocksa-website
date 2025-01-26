@@ -10,6 +10,10 @@
                             <p class="text-lg text-gray-700">{{ $rock->title }}</p>
                         </div>
                         <div>
+                            <p class="text-xl font-semibold"><b>Category:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->category->name }}</p>
+                        </div>
+                        <div>
                             <p class="text-xl font-semibold"><b>Main Mineral:</b></p>
                             <p class="text-lg text-gray-700">{{ $rock->main_mineral }}</p>
                         </div>

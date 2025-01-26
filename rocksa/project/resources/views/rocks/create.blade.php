@@ -107,10 +107,10 @@
                         <div class="mt-4">
                             <x-input-label for="category_id" :value="__('Category')"/>
                             <select id="category_id" name="category_id" class="block mt-1 w-full">
-                                <option value="">{{ __('Select a category') }}</option>
+                                <option>{{ __('Select a category') }}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category_id', $rock->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                    <option value={{ $category->id }}
+                                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach

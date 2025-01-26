@@ -107,24 +107,24 @@
                         <x-images-gallery :rock="$rock"></x-images-gallery>
 
                         <div class="mt-4">
+                            <x-input-label for="category_id" :value="__('Category')"/>
+                            <select id="category_id" name="category_id" class="block mt-1 w-full">
+                                <option value="">{{ __('Select a category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category_id', $rock->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
+                        </div>
+
+                        <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')"/>
                             <x-text-input id="description" class="block mt-1 w-full" type="text" name="description"
                                           :value="$rock->description"/>
                             <x-input-error :messages="$errors->get('description')" class="mt-2"/>
-                            <div class="mt-4">
-                                <x-input-label for="category_id" :value="__('Category')"/>
-                                <select id="category_id" name="category_id" class="block mt-1 w-full">
-                                    <option value="">{{ __('Select a category') }}</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ old('category_id', $rock->category_id ?? '') == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
-                            </div>
-
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

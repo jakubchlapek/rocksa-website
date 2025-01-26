@@ -26,6 +26,7 @@ class StoreRockRequest extends FormRequest
             'title' => 'required',
             'description' => 'required',
             'main_mineral' => 'required',
+            'category_id' => 'required',
             'treatment' => 'required',
             'country_of_origin' => 'required',
             'weight' => 'required|numeric',
