@@ -4,35 +4,65 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <!-- Rock Information -->
-                    <div>
-                        <p class="text-xl"><b>Listing Title: </b>{{ $rock->title }}</p>
-                        <p class="text-xl"><b>Main Mineral: </b>{{ $rock->main_mineral }}</p>
-                        <p class="text-xl"><b>Treatment: </b>{{ $rock->treatment }}</p>
-                        <p class="text-xl"><b>Weight: </b>{{ $rock->weight }}</p>
-                        <p class="text-xl"><b>Density: </b>{{ $rock->density }} <i>g/cm³</i></p>
-                        <p class="text-xl"><b>Color: </b>{{ $rock->color }}</p>
-                        <p class="text-xl"><b>Clarity: </b>{{ $rock->clarity }}</p>
-                        <p class="text-xl"><b>Toughness: </b>{{ $rock->toughness }} <i>(in Mohs scale)</i></p>
-                        <p class="text-xl"><b>Rarity: </b>{{ $rock->rarity }}</p>
-                        <div class="pt-3">
-                            <b>Description: </b>@markdown($rock->description)
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-b pb-6">
+                        <div>
+                            <p class="text-xl font-semibold"><b>Listing Title:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->title }}</p>
                         </div>
-                        <x-images-gallery :rock="$rock"></x-images-gallery>
-
-                        <p class="text-sm text-gray-500 pt-3">
-                            <strong class="mr-1">From:</strong>{{ $rock->country_of_origin }}
-                        </p>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Main Mineral:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->main_mineral }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Treatment:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->treatment }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Weight:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->weight }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Density:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->density }} <i>g/cm³</i></p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Color:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->color }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Clarity:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->clarity }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Toughness:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->toughness }} <i>(in Mohs scale)</i></p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Rarity:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->rarity }}</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-semibold"><b>Country of Origin:</b></p>
+                            <p class="text-lg text-gray-700">{{ $rock->country_of_origin }}</p>
+                        </div>
                     </div>
+
+                    <div class="mt-4">
+                        <p class="text-xl font-semibold"><b>Description:</b></p>
+                        <div class="text-lg text-gray-700">@markdown($rock->description)</div>
+                    </div>
+
+                    <x-images-gallery :rock="$rock"></x-images-gallery>
 
                     <!-- Edit/Delete Actions -->
                     @if($isOwner)
-                        <div class="flex justify-left">
-                            <form method="GET" action="{{ route('rocks.edit', $rock) }}" class="pt-6">
+                        <div class="flex space-x-4 mt-6">
+                            <form method="GET" action="{{ route('rocks.edit', $rock) }}">
                                 <x-primary-button>
                                     {{ __('Edit') }}
                                 </x-primary-button>
                             </form>
-                            <form method="POST" action="{{ route('rocks.destroy', $rock) }}" class="pt-6 pl-3">
+                            <form method="POST" action="{{ route('rocks.destroy', $rock) }}">
                                 @csrf
                                 @method('DELETE')
                                 <x-primary-button class="bg-red-800 hover:bg-red-600">
@@ -43,8 +73,8 @@
                     @endif
 
                     <!-- Comments Section -->
-                    <div class="mt-5 rounded-2xl space-y-5 p-5 bg-gray-100">
-                        <h2 class="text-xl font-bold">{{ __('Comments') }}</h2>
+                    <div class="mt-8 rounded-2xl space-y-5 p-5 bg-gray-100">
+                        <h2 class="text-2xl font-bold">{{ __('Comments') }}</h2>
                         @forelse($rock->comments as $comment)
                             @if(!$comment->parent)
                                 <div class="block rounded-2xl bg-white ring-2 ring-gray-300 p-2">
@@ -70,7 +100,7 @@
                                     </div>
 
                                     <!-- Reply Button -->
-                                    <div x-data="{ showReplyForm: false }" class="block p-2 mt-2 ">
+                                    <div x-data="{ showReplyForm: false }" class="block p-2 mt-2">
                                         <div class="flex w-24 flex-row p-1 px-2 bg-gray-300 rounded-2xl items-center justify-between">
                                             <x-ri-chat-ai-line class="w-6 h-6" />
                                             <button @click="showReplyForm = !showReplyForm" class="focus:outline-none">
