@@ -35,14 +35,18 @@
                                 'name' => $rock->title,
                                 'color' => $rock->color,
                                 'origin' => $rock->country_of_origin,
-                                'properties' => 'Mineral: ' . $rock->main_mineral . ',<br>'
-                                            . 'Weight: ' . $rock->weight . 'g,<br>'
-                                            . 'Treatment: ' . $rock->treatment . '<br>',
-                                'description' => implode('<br>', [
-                            'Clarity: ' . $rock->clarity . '&emsp;&emsp;Rarity: ' . $rock->rarity,
-                            'Density: ' . $rock->density . 'g/cm^3&emsp;&emsp;Toughness: ' . $rock->toughness . ' (in Mohs scale)',
-                            $rock->description
-                            ]),
+                                'properties' => [
+                                    'mineral' => $rock->main_mineral,
+                                    'weight' => $rock->weight,
+                                    'treatment' => $rock->treatment
+                                ],
+                                'description' => [
+                                    'clarity' => $rock->clarity,
+                                    'rarity' => $rock->rarity,
+                                    'density' => $rock->density,
+                                    'toughness' => $rock->toughness,
+                                    'extra' => $rock->description
+                                ],
                                 'price' => $rock->price,
                                 'moreImages' => [$rock->image_1, $rock->image_2, $rock->image_3]
                             ]])
