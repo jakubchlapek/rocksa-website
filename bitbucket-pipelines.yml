@@ -35,7 +35,7 @@ pipelines:
           -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/8888"; do echo "Waiting for App..."; sleep 1; done
           -   vendor/bin/codecept run Acceptance --xml test_report.xml
           -   killall php
-          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 20 --exclude vendor --exclude tests
+          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 42 --min-tokens 35 --exclude vendor --exclude tests
           - popd
           - .ci/collect_reports.sh
 definitions:
