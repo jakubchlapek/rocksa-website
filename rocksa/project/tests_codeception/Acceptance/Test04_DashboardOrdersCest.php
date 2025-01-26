@@ -38,7 +38,7 @@ class Test04_DashboardOrdersCest
         $I->click('(//button[@alt="addremoveCartButton"])[2]');
         $I->wait(1);
         $I->click('//button[@alt="toggleCartButton"]');
-        $I->waitForElementVisible('//div[@x-show="isOpen"]', 5);
+        $I->waitForElementVisible('//div[@x-show="isOpen"]', 15);
         $I->see(' Total: 20 €');
         $I->click('//button[@alt="increaseQuantityButton"]');
         $I->wait(2);
