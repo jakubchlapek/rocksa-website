@@ -90,7 +90,7 @@
                 <button
                     alt="checkoutButton"
                     wire:click="proceedToCheckout"
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold p-2 rounded-lg flex-1"
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold p-2 transition duration-200 shadow-md rounded-lg flex-1"
                 >
                     Proceed to Checkout
                 </button>
