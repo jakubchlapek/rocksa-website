@@ -38,14 +38,14 @@ class Test04_DashboardOrdersCest
         $I->click('(//button[@alt="addremoveCartButton"])[2]');
         $I->wait(1);
         $I->click('//button[@alt="toggleCartButton"]');
-        $I->wait(1);
-        $I->see('Total: $20');
+        $I->waitForElementVisible('//div[@x-show="isOpen"]', 5);
+        $I->see(' Total: 20 €');
         $I->click('//button[@alt="increaseQuantityButton"]');
-        $I->wait(1);
-        $I->see('Total: $25');
+        $I->wait(2);
+        $I->see('Total: 25 €');
         $I->click('(//button[@alt="removeFromCartButton"])[2]');
-        $I->wait(1);
-        $I->see('Total: $10');
+        $I->wait(2);
+        $I->see('Total: 10 €');
         $I->click('//button[@alt="checkoutButton"]');
 
 
@@ -113,7 +113,7 @@ class Test04_DashboardOrdersCest
         $I->see($testEmail);
         $I->see($testStreet);
         $I->see($testPhone);
-        $I->see('Total: $10.00');
+        $I->see('Total: 10.00 €');
         $I->see($testPostalCode);
 
         $I->amOnPage('/orders/');

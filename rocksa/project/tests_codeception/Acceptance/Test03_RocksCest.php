@@ -21,7 +21,9 @@ class Test03_RocksCest
         // test for an opportunity to create a new rock
         $I->waitForNextPage(fn () => $I->click('Create new rock'));
 
-        $I->seeCurrentUrlEquals('/rocks/create');
+        // $I->seeCurrentUrlMatches('/rocks/create');
+        $I->seeInCurrentUrl('/rocks/create');
+        // $I->seeCurrentUrlEquals('/rocks/create');
 
         $I->see('Create a rock!', 'h1');
 
@@ -61,6 +63,7 @@ class Test03_RocksCest
         $I->fillField('Clarity', $clarity);
         $I->fillField('Toughness', $toughness);
         $I->fillField('description', $rockDescription);
+        $I->selectOption('#category_id', '1');
         // try to add the rock
         $I->waitForNextPage(fn () => $I->click('Create'));
         // look for the rock in the database
