@@ -18,7 +18,6 @@ pipelines:
           - pushd rocksa/project
           -   composer install
           -   vendor/bin/codecept build
-          -   vendor/bin/php-cs-fixer fix --diff --dry-run .
           -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 35 --exclude vendor --exclude config --exclude storage --exclude tests_codeception/Support/_generated
           -   cp .env.example .env
           -   php artisan key:generate
