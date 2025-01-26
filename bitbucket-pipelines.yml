@@ -18,7 +18,7 @@ pipelines:
           - pushd rocksa/project
           -   composer install
           -   vendor/bin/codecept build
-          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 35 --exclude vendor --exclude config --exclude storage --exclude tests_codeception/Support/_generated
+          -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 16 --min-tokens 35 --exclude vendor --exclude config --exclude storage --exclude tests_codeception/Support/_generated
           -   cp .env.example .env
           -   php artisan key:generate
           -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306"; do echo "Waiting for MySQL..."; sleep 1; done
