@@ -39,7 +39,6 @@ class RockController extends Controller
 
         $rock = Rock::create($data);
 
-
         return redirect()->route('rocks.show', $rock);
     }
 
