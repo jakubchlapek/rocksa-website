@@ -10,7 +10,7 @@
                         @foreach($cart as $productId => $item)
                             <div class="border rounded-lg shadow-md p-4 flex flex-col items-center space-y-4">
                                 <!-- Product Image -->
-                                <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}" class="w-24 h-24 object-cover rounded-lg">
+                                <img src="data:image/{{ pathinfo($item['image'], PATHINFO_EXTENSION) }};base64,{{ $item['image'] }}" alt="{{ $item['name'] }}" class="w-24 h-24 object-cover rounded-lg">
 
                                 <!-- Product Info -->
                                 <div class="text-center">
