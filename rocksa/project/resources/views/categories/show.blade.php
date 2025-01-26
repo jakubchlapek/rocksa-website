@@ -31,22 +31,22 @@
                             @foreach($rocks as $rock)
                                 <div class="flex justify-center">
                                     @livewire('rock-card', ['data' => [
-                                    'rockId' => $rock->id,
-                                    'image' => '/static/amethyst.jpg',
-                                    'name' => $rock->title,
-                                    'color' => $rock->color,
-                                    'origin' => $rock->country_of_origin,
-                                    'properties' => 'Mineral: ' . $rock->main_mineral . ',<br>'
-                                    . 'Weight: ' . $rock->weight . 'g,<br>'
-                                    . 'Treatment: ' . $rock->treatment . '<br>',
-                                    'description' => 'Clarity: ' . $rock->clarity . '&emsp;&emsp;'
-                                    . 'Rarity: ' . $rock->rarity . '<br>'
-                                    . 'Density: ' . $rock->density . 'g/cm^3&emsp;&emsp;'
-                                    . 'Toughness: ' . $rock->toughness . ' (in Mohs scale)<br>'
-                                    . $rock->description,
-                                    'price' => $rock->price,
-                                    'moreImages' => ['/static/amethyst.jpg', '/static/amethyst1.jpg', '/static/amethyst2.jpg']
-                                    ]])
+                                'rockId' => $rock->id,
+                                'main_image' => $rock->main_image,
+                                'name' => $rock->title,
+                                'color' => $rock->color,
+                                'origin' => $rock->country_of_origin,
+                                'properties' => 'Mineral: ' . $rock->main_mineral . ',<br>'
+                                            . 'Weight: ' . $rock->weight . 'g,<br>'
+                                            . 'Treatment: ' . $rock->treatment . '<br>',
+                                'description' => implode('<br>', [
+                            'Clarity: ' . $rock->clarity . '&emsp;&emsp;Rarity: ' . $rock->rarity,
+                            'Density: ' . $rock->density . 'g/cm^3&emsp;&emsp;Toughness: ' . $rock->toughness . ' (in Mohs scale)',
+                            $rock->description
+                            ]),
+                                'price' => $rock->price,
+                                'moreImages' => [$rock->image_1, $rock->image_2, $rock->image_3]
+                            ]])
                                 </div>
                             @endforeach
                         </div>
