@@ -15,20 +15,10 @@ pipelines:
           - selenium
         script:
           - composer global require sebastian/phpcpd:6.0.3 --dev
-<<<<<<< HEAD
-          - pushd 07_testing/02_exercise/project
+          - pushd rocksa/project
           -   composer install
           -   vendor/bin/codecept build
           -   vendor/bin/php-cs-fixer fix --diff --dry-run .
-          -   vendor/bin/phpstan analyze -c phpstan.neon
-          -   vendor/bin/codecept run Unit
-          -   php -S localhost:8888 -t public &
-=======
-          - pushd 09_laravel_tdd/project
-          -   composer install
-          -   vendor/bin/codecept build
-          -   vendor/bin/php-cs-fixer fix --diff --dry-run .
-          -   vendor/bin/phpstan analyze
           -   ~/.composer/vendor/bin/phpcpd . --fuzzy --min-lines 1 --min-tokens 35 --exclude vendor --exclude config --exclude storage --exclude tests_codeception/Support/_generated
           -   cp .env.example .env
           -   php artisan key:generate
@@ -40,7 +30,6 @@ pipelines:
           -   npm run build
           -   php artisan test
           -   php artisan serve --port 8888 &
->>>>>>> 0cf6acb (09_laravel_tdd)
           -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/6379"; do echo "Waiting for Redis..."; sleep 1; done
           -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306"; do echo "Waiting for MySQL..."; sleep 1; done
           -   while ! timeout 1 bash -c "echo > /dev/tcp/localhost/4444"; do echo "Waiting for Selenium..."; sleep 1; done
