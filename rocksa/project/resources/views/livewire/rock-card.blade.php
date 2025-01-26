@@ -160,6 +160,7 @@
                     'bg-red-500': inCart && hovering,
                     'bg-black hover:bg-gray-600': !inCart
                 }"
+                alt="addremoveCartButton"
                 class="flex items-center justify-center w-12 h-12 rounded-full transition-all duration-200 text-white shadow-lg"
                 x-data="{ hovering: false }">
             <!-- Default "Add" Icon -->

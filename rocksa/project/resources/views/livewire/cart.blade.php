@@ -40,7 +40,7 @@
                                 <img src="data:image/{{ pathinfo($item['image'], PATHINFO_EXTENSION) }};base64,{{ $item['image'] }}" alt="{{ $item['name'] }}" class="w-16 h-16 object-cover object-center rounded-lg shadow-md">
                                 <div class="flex-1">
                                     <p class="font-semibold text-gray-900">{{ $item['name'] }}</p>
-                                    <p class="text-gray-500 text-sm">${{ $item['price'] }} x {{ $item['quantity'] }}</p>
+                                    <p class="text-gray-500 text-sm">{{ $item['price'] }} € x {{ $item['quantity'] }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
@@ -77,7 +77,7 @@
         <!-- Total and Buttons -->
         <div class="border-t px-6 py-4 bg-gray-50">
             <p class="text-gray-900 font-bold text-2xl mb-3">
-                Total: ${{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
+                Total: {{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }} €
             </p>
             <div class="flex space-x-4">
                 <button
