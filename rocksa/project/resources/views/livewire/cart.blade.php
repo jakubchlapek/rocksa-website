@@ -72,19 +72,26 @@
         @endif
 
         <!-- Total and Clear Cart Button -->
-        <div class="absolute bottom-6 left-6 right-6 flex justify-between items-center">
-            <p class="text-gray-900 font-semibold text-lg">
+        <div class="block bottom-6 left-6 right-6 z-50 border-t pt-4">
+            <p class="text-gray-900 font-bold text-2xl my-5">
                 Total: ${{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
             </p>
-            <button alt="clearCartButton" wire:click="clearCart" class="bg-red-500 text-white px-4 py-2 mx-5 rounded-lg hover:bg-red-600 transition duration-200 shadow-md">
-                Clear Cart
-            </button>
-
-
-                <button alt="checkoutButton" wire:click="proceedToCheckout" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">
+            <div class="flex space-x-4">
+                <button
+                    alt="clearCartButton"
+                    wire:click="clearCart"
+                    class="bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-200 shadow-md flex-1"
+                >
+                    Clear Cart
+                </button>
+                <button
+                    alt="checkoutButton"
+                    wire:click="proceedToCheckout"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 rounded-lg flex-1"
+                >
                     Proceed to Checkout
                 </button>
-
+            </div>
         </div>
     </div>
 </div>
