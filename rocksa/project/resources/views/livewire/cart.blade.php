@@ -37,7 +37,7 @@
                         <li class="flex justify-between items-center py-4">
                             <div class="flex items-center space-x-4">
                                 <!-- Product Image -->
-                                <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}" class="w-16 h-16 object-cover rounded-lg shadow-md">
+                                <img src="data:image/{{ pathinfo($item['image'], PATHINFO_EXTENSION) }};base64,{{ $item['image'] }}" alt="{{ $item['name'] }}" class="w-16 h-16 object-cover object-center rounded-lg shadow-md">
                                 <div class="flex-1">
                                     <p class="font-semibold text-gray-900">{{ $item['name'] }}</p>
                                     <p class="text-gray-500 text-sm">${{ $item['price'] }} x {{ $item['quantity'] }}</p>
