@@ -71,7 +71,7 @@
 
                                     <!-- Reply Button -->
                                     <div x-data="{ showReplyForm: false }" class="block p-2 mt-2 ">
-                                        <div class="flex flex-row w-24 flex-row p-1 px-2 bg-gray-300 rounded-2xl items-center justify-between">
+                                        <div class="flex w-24 flex-row p-1 px-2 bg-gray-300 rounded-2xl items-center justify-between">
                                             <x-ri-chat-ai-line class="w-6 h-6" />
                                             <button @click="showReplyForm = !showReplyForm" class="focus:outline-none">
                                                 {{ __('Reply') }}
