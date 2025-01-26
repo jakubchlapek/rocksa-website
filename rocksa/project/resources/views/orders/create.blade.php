@@ -15,7 +15,7 @@
                                 <!-- Product Info -->
                                 <div class="text-center">
                                     <p class="font-semibold text-gray-900">{{ $item['name'] }}</p>
-                                    <p class="text-gray-500 text-sm">${{ $item['price'] }} x {{ $item['quantity'] }}</p>
+                                    <p class="text-gray-500 text-sm">{{ $item['price'] }} € x {{ $item['quantity'] }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -24,7 +24,7 @@
                     <!-- Total Amount -->
                     <div class="border-t pt-4 mt-6">
                         <p class="text-lg font-bold text-gray-900">
-                            Total: ${{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }}
+                            Total: {{ collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']) }} €
                         </p>
                     </div>
 

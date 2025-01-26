@@ -11,7 +11,7 @@
                         <p class="text-xl"><b>Postal Code:</b> {{ $order->postal_code }}</p>
                         <p class="text-xl"><b>E-mail:</b> {{ $order->email }}</p>
                         <p class="text-xl"><b>Phone Number:</b> {{ $order->phone_number }}</p>
-                        <p class="text-xl"><b>Total:</b> ${{ number_format($order->total, 2) }}</p>
+                        <p class="text-xl"><b>Total:</b> {{ number_format($order->total, 2) }} €</p>
                         <p class="text-xl"><b>Order Date:</b> {{ $order->created_at->format('Y-m-d H:i') }}</p>
 
                         <h3 class="text-2xl mt-6 mb-4"><b>Order Items:</b></h3>
@@ -68,7 +68,7 @@
                                                     <div class="text-sm text-gray-500">{{ $item->quantity }}</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="text-sm text-gray-500">${{ $item->price * $item->quantity}} </div>
+                                                    <div class="text-sm text-gray-500">{{ $item->price }} € x {{ $item->quantity }}</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm text-blue-600 underline">
