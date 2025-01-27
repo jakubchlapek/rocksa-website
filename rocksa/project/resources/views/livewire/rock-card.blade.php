@@ -27,7 +27,7 @@
      "
      @keydown.escape.window="fullScreenImage ? fullScreenImage = null : showImageGallery = false"
      class="flex flex-col h-[35rem] text-2xl font-bold ring-4 ring-gray-300 shadow-lg rounded-2xl bg-gray-50 transition-all duration-500 ease-in-out"
-     :class="{ 'w-[30rem]': expanded, 'w-[20rem]': !expanded }">
+     :class="{ 'w-[25rem]': expanded, 'w-[20rem]': !expanded }">
 
     <!-- Full-Screen Image View -->
     <div x-show="fullScreenImage && fullScreenImage !== 'data:image/;base64,'"

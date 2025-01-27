@@ -1,4 +1,4 @@
-<div class="flex flex-col w-full max-w-[1920px] justify-center">
+<div class="flex flex-col w-full max-w-7xl justify-center">
     <nav id="nav-bar" class="flex justify-between items-center h-[9rem] p-7">
         <x-application-logo></x-application-logo>
         <ul class="flex space-x-8 text-3xl text-white">
